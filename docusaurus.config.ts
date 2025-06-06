@@ -19,6 +19,7 @@ const config: Config = {
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/myDoc/',
+  deploymentBranch: 'gh-pages',
   trailingSlash: false, // <-- 이 줄을 추가해주세요!
 
   // GitHub pages deployment config.
