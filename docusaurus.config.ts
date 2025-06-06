@@ -18,12 +18,13 @@ const config: Config = {
   url: 'https://ILoveOhSia.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/my-doc/',
+  baseUrl: '/myDoc/',
+  trailingSlash: false, // <-- 이 줄을 추가해주세요!
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'ILoveSia', // Usually your GitHub org/user name.
+  projectName: 'myDoc', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
