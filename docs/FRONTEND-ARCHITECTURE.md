@@ -1246,9 +1246,9 @@ const PerformanceMonitor: React.FC = ({ children }) => {
 
 ### 내부 문서
 
-- [공통 컴포넌트 가이드](./src/shared/components/ui/COMMON_COMPONENTS_GUIDE.md)
-- [컴포넌트 사용 예시](./src/shared/components/ui/COMPONENT_EXAMPLES.md)
-- [프로젝트 README](./README.md)
+- [공통 컴포넌트 가이드](../src/shared/components/ui/COMMON_COMPONENTS_GUIDE.md)
+- [컴포넌트 사용 예시](../src/shared/components/ui/COMPONENT_EXAMPLES.md)
+- [프로젝트 README](../README.md)
 
 ### 개발 도구
 
