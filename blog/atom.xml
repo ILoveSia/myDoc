@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ILoveSia.github.io/myDoc/blog</id>
-    <title>I Love Sia Site Blog</title>
+    <title>I Love Oh Sia Site Blog</title>
     <updated>2021-08-26T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ILoveSia.github.io/myDoc/blog"/>
-    <subtitle>I Love Sia Site Blog</subtitle>
+    <subtitle>I Love Oh Sia Site Blog</subtitle>
     <icon>https://ILoveSia.github.io/myDoc/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
