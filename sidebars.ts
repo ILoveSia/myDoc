@@ -20,21 +20,19 @@ const sidebars: SidebarsConfig = {
   
   tutorialSidebar: [
     'intro',
-    'hello',
+    'docusaurus-guide',
     {
       type: 'category',
       label: 'Tutorial',
-      items: ['tutorial-basics/create-a-document'],
+      items: ['docusaurus-guide'],
     },
     {
       type: 'category',
       label: 'Advanced Tutorial',
       items: [
-        'COMMON_COMPONENTS_GUIDE',
-        'COMPONENT_EXAMPLES',
-        'FRONTEND_ARCHITECTURE',
-        'MCP-Server-guide',
-        'docusaurus-guide',
+        'COMMON-COMPONENTS_GUIDE',
+        'COMPONENT-EXAMPLES',
+        'FRONTEND-ARCHITECTURE',
       ],
     },
     
