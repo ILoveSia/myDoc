@@ -30,7 +30,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Advanced Tutorial',
       items: [
-        'COMMON-COMPONENTS_GUIDE',
+        'COMMON-COMPONENTS-GUIDE',
         'COMPONENT-EXAMPLES',
         'FRONTEND-ARCHITECTURE',
       ],
