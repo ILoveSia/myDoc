@@ -32,7 +32,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'COMMON_COMPONENTS_GUIDE',
         'COMPONENT_EXAMPLES',
-        'tutorial-FRONTEND_ARCHITECTURE',
+        'FRONTEND_ARCHITECTURE',
       ],
     },
     
