@@ -33,6 +33,8 @@ const sidebars: SidebarsConfig = {
         'COMMON_COMPONENTS_GUIDE',
         'COMPONENT_EXAMPLES',
         'FRONTEND_ARCHITECTURE',
+        'MCP-Server-guide',
+        'docusaurus-guide',
       ],
     },
     
