@@ -20,16 +20,10 @@ const sidebars: SidebarsConfig = {
   
   tutorialSidebar: [
     'intro',
-    'docusaurus-guide',
     {
       type: 'category',
       label: 'Tutorial',
-      items: ['docusaurus-guide'],
-    },
-    {
-      type: 'category',
-      label: 'Advanced Tutorial',
-      items: [
+      items: ['docusaurus-guide',
         'COMMON-COMPONENTS-GUIDE',
         'COMPONENT-EXAMPLES',
         'FRONTEND-ARCHITECTURE',
