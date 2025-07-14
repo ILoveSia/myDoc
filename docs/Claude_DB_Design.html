@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="ko" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-Claude_DB_Design" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.0">
+<title data-rh="true">���� å�������� ���� �ý��� DB ���輭 | I Love Oh Sia Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://ILoveSia.github.io/myDoc/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://ILoveSia.github.io/myDoc/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://ILoveSia.github.io/myDoc/docs/Claude_DB_Design"><meta data-rh="true" property="og:locale" content="ko"><meta data-rh="true" name="docusaurus_locale" content="ko"><meta data-rh="true" name="docsearch:language" content="ko"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="���� å�������� ���� �ý��� DB ���輭 | I Love Oh Sia Site"><meta data-rh="true" name="description" content="1. ����"><meta data-rh="true" property="og:description" content="1. ����"><link data-rh="true" rel="icon" href="/myDoc/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ILoveSia.github.io/myDoc/docs/Claude_DB_Design"><link data-rh="true" rel="alternate" href="https://ILoveSia.github.io/myDoc/docs/Claude_DB_Design" hreflang="ko"><link data-rh="true" rel="alternate" href="https://ILoveSia.github.io/myDoc/docs/Claude_DB_Design" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"���� å�������� ���� �ý��� DB ���輭","item":"https://ILoveSia.github.io/myDoc/docs/Claude_DB_Design"}]}</script><link rel="alternate" type="application/rss+xml" href="/myDoc/blog/rss.xml" title="I Love Oh Sia Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/myDoc/blog/atom.xml" title="I Love Oh Sia Site Atom Feed"><link rel="stylesheet" href="/myDoc/assets/css/styles.ac68cdc7.css">
+<script src="/myDoc/assets/js/runtime~main.6c91303f.js" defer="defer"></script>
+<script src="/myDoc/assets/js/main.d6300483.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/myDoc/img/logo.svg"><div role="region" aria-label="본문으로 건너뛰기"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">본문으로 건너뛰기</a></div><nav aria-label="메인" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="사이드바 펼치거나 접기" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/myDoc/"><div class="navbar__logo"><img src="/myDoc/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/myDoc/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">My Site</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/myDoc/docs/intro">Tutorial</a><a class="navbar__item navbar__link" href="/myDoc/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/ILoveSia/myDoc" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="어두운 모드와 밝은 모드 전환하기 (현재 system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="맨 위로 스크롤하기" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="문서 사이드바" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/myDoc/docs/intro">Tutorial Intro</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/myDoc/docs/BACKEND-ARCHITECTURE">ITCEN Solution - 백엔드 아키텍처 문서</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/myDoc/docs/COMMON-COMPONENTS-GUIDE">공통 컴포넌트 개발 가이드</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/myDoc/docs/COMPONENT-EXAMPLES">공통 컴포넌트 사용 예시</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/myDoc/docs/Claude_BRS">���� å�������� ���� �ý��� �䱸���� ���Ǽ�</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/myDoc/docs/Claude_DB_Design">���� å�������� ���� �ý��� DB ���輭</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/myDoc/docs/Claude_UI_Design">통합 책무구조도 관리 시스템 화면설계서</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/myDoc/docs/FRONTEND-ARCHITECTURE">ITCEN Solution Frontend 아키텍처 가이드</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/myDoc/docs/docusaurus-guide">Docusaurus로 나만의 공부 노트 웹사이트 만들기</a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="탐색 경로"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="홈" class="breadcrumbs__link" href="/myDoc/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">���� å�������� ���� �ý��� DB ���輭</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">이 페이지에서</button></div><div class="theme-doc-markdown markdown"><header><h1>���� å�������� ���� �ý��� DB ���輭</h1></header>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="1-">1. ����<a href="#1-" class="hash-link" aria-label="1. ����에 대한 직접 링크" title="1. ����에 대한 직접 링크">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="11-">1.1 ����<a href="#11-" class="hash-link" aria-label="1.1 ����에 대한 직접 링크" title="1.1 ����에 대한 직접 링크">​</a></h3>
+<p>�� ������ ���� å�������� ���� �ý����� �����ͺ��̽� ���踦 �����Ѵ�. �ý����� �䱸������ ȿ�������� �����ϱ� ���� �����ͺ��̽� ����, ���̺�, �ʵ�, ���� ���� ���� ����Ѵ�.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="12-">1.2 ����<a href="#12-" class="hash-link" aria-label="1.2 ����에 대한 직접 링크" title="1.2 ����에 대한 직접 링크">​</a></h3>
+<ul>
+<li>å������ ���� ������</li>
+<li>�������� ���� ������</li>
+<li>������ ���� ������</li>
+<li>���� ���� ������</li>
+<li>�ý��� ���� ������</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="13--">1.3 ���� ����<a href="#13--" class="hash-link" aria-label="1.3 ���� ����에 대한 직접 링크" title="1.3 ���� ����에 대한 직접 링크">​</a></h3>
+<ul>
+<li>���� å�������� ���� �ý��� �䱸���� ���Ǽ�</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="2-ͺ̽-">2. �����ͺ��̽� ����<a href="#2-ͺ̽-" class="hash-link" aria-label="2. �����ͺ��̽� ����에 대한 직접 링크" title="2. �����ͺ��̽� ����에 대한 직접 링크">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="21-ͺ̽-">2.1 �����ͺ��̽� ����<a href="#21-ͺ̽-" class="hash-link" aria-label="2.1 �����ͺ��̽� ����에 대한 직접 링크" title="2.1 �����ͺ��̽� ����에 대한 직접 링크">​</a></h3>
+<ul>
+<li><strong>DBMS</strong>: ������ �����ͺ��̽�(RDBMS)</li>
+<li><strong>���� ���ڵ�</strong>: UTF-8</li>
+<li><strong>�ֿ� ����</strong>:<!-- -->
+<ul>
+<li>����/�λ� ���� ����</li>
+<li>å�� ���� ����</li>
+<li>�������� ���� ����</li>
+<li>������ ���� ����</li>
+<li>���� ���� ����</li>
+<li>�ý��� ���� ����</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="22----erd">2.2 ������ ������ �� (ERD)<a href="#22----erd" class="hash-link" aria-label="2.2 ������ ������ �� (ERD)에 대한 직접 링크" title="2.2 ������ ������ �� (ERD)에 대한 직접 링크">​</a></h3>
+<p>���� å�������� ���� �ý����� �ֿ� ��ƼƼ�� ����� ������ ����:</p>
+<ul>
+<li>����(Organization) �� �ӿ�/�μ���(Executive) : 1<!-- -->:N<!-- --> ����</li>
+<li>�ӿ�/�μ���(Executive) �� å��(Duty) : N<!-- -->:M<!-- --> ���� (ExecutiveDuty �߰� ���̺�)</li>
+<li>å��(Duty) �� å�������(DutyDescription) : 1<!-- -->:N<!-- --> ����</li>
+<li>å��(Duty) �� ���������Ŵ���(ControlManual) : 1<!-- -->:N<!-- --> ����</li>
+<li>�μ�(Department) �� ��������Ȱ��(ControlActivity) : 1<!-- -->:N<!-- --> ����</li>
+<li>��������Ȱ��(ControlActivity) �� ��������(Inspection) : 1<!-- -->:N<!-- --> ����</li>
+<li>��������(Inspection) �� ��������(Improvement) : 1<!-- -->:N<!-- --> ����</li>
+<li>����(Document) �� ����(Approval) : 1<!-- -->:N<!-- --> ����</li>
+<li>�����(User) �� ����(Role) : N<!-- -->:M<!-- --> ���� (UserRole �߰� ���̺�)</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="3-̺-">3. ���̺� ����<a href="#3-̺-" class="hash-link" aria-label="3. ���̺� ����에 대한 직접 링크" title="3. ���̺� ����에 대한 직접 링크">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="31-λ--">3.1 ����/�λ� ���� ����<a href="#31-λ--" class="hash-link" aria-label="3.1 ����/�λ� ���� ����에 대한 직접 링크" title="3.1 ����/�λ� ���� ����에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="311-organization--̺">3.1.1 Organization (���� ���̺�)<a href="#311-organization--̺" class="hash-link" aria-label="3.1.1 Organization (���� ���̺�)에 대한 직접 링크" title="3.1.1 Organization (���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>org_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>PK</td></tr><tr><td>org_name</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>org_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ���� (����, �μ�, �� ��)</td><td>-</td></tr><tr><td>parent_org_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� ���� ID</td><td>FK(Organization)</td></tr><tr><td>org_level</td><td>INT</td><td>-</td><td>NO</td><td>0</td><td>���� ����</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>500</td><td>YES</td><td>NULL</td><td>���� ����</td><td>-</td></tr><tr><td>effective_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>expiry_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Organization: org_id (Primary Key)</li>
+<li>IX_Organization_Parent: parent_org_id (Foreign Key)</li>
+<li>IX_Organization_Name: org_name</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="312-department-μ-̺">3.1.2 Department (�μ� ���̺�)<a href="#312-department-μ-̺" class="hash-link" aria-label="3.1.2 Department (�μ� ���̺�)에 대한 직접 링크" title="3.1.2 Department (�μ� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�μ� �� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>dept_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�μ� ID</td><td>PK</td></tr><tr><td>org_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Organization)</td></tr><tr><td>dept_code</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�μ� �ڵ�</td><td>-</td></tr><tr><td>dept_name</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>�μ���</td><td>-</td></tr><tr><td>dept_head_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>�μ��� ID</td><td>FK(Executive)</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Department: dept_id (Primary Key)</li>
+<li>FK_Department_Organization: org_id (Foreign Key)</li>
+<li>FK_Department_Executive: dept_head_id (Foreign Key)</li>
+<li>IX_Department_Code: dept_code</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="313-executive-ӿμ-̺">3.1.3 Executive (�ӿ�/�μ��� ���̺�)<a href="#313-executive-ӿμ-̺" class="hash-link" aria-label="3.1.3 Executive (�ӿ�/�μ��� ���̺�)에 대한 직접 링크" title="3.1.3 Executive (�ӿ�/�μ��� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�ӿ� �� �μ��� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>executive_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ӿ�/�μ��� ID</td><td>PK</td></tr><tr><td>user_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����� ID</td><td>FK(User)</td></tr><tr><td>org_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�Ҽ� ���� ID</td><td>FK(Organization)</td></tr><tr><td>position</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>title</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>��å</td><td>-</td></tr><tr><td>executive_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ӿ� ���� (�ӿ�/�μ���)</td><td>-</td></tr><tr><td>appointed_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>�Ӹ���</td><td>-</td></tr><tr><td>resigned_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Executive: executive_id (Primary Key)</li>
+<li>FK_Executive_User: user_id (Foreign Key)</li>
+<li>FK_Executive_Organization: org_id (Foreign Key)</li>
+<li>IX_Executive_Position: position</li>
+<li>IX_Executive_Type: executive_type</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="314-committee-ü-̺">3.1.4 Committee (����ü ���̺�)<a href="#314-committee-ü-̺" class="hash-link" aria-label="3.1.4 Committee (����ü ���̺�)에 대한 직접 링크" title="3.1.4 Committee (����ü ���̺�)에 대한 직접 링크">​</a></h4>
+<p>����ü ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>committee_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����ü ID</td><td>PK</td></tr><tr><td>committee_name</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>����ü��</td><td>-</td></tr><tr><td>committee_type</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>����ü ����</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>500</td><td>YES</td><td>NULL</td><td>����ü ����</td><td>-</td></tr><tr><td>chair_executive_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� �ӿ� ID</td><td>FK(Executive)</td></tr><tr><td>established_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>disbanded_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>�ػ���</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Committee: committee_id (Primary Key)</li>
+<li>FK_Committee_Executive: chair_executive_id (Foreign Key)</li>
+<li>IX_Committee_Name: committee_name</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="315-committeemember-ü--̺">3.1.5 CommitteeMember (����ü ������ ���̺�)<a href="#315-committeemember-ü--̺" class="hash-link" aria-label="3.1.5 CommitteeMember (����ü ������ ���̺�)에 대한 직접 링크" title="3.1.5 CommitteeMember (����ü ������ ���̺�)에 대한 직접 링크">​</a></h4>
+<p>����ü ������ ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>committee_member_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����ü ������ ID</td><td>PK</td></tr><tr><td>committee_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����ü ID</td><td>FK(Committee)</td></tr><tr><td>executive_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ӿ� ID</td><td>FK(Executive)</td></tr><tr><td>role</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>joined_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>left_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>Ż����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_CommitteeMember: committee_member_id (Primary Key)</li>
+<li>FK_CommitteeMember_Committee: committee_id (Foreign Key)</li>
+<li>FK_CommitteeMember_Executive: executive_id (Foreign Key)</li>
+<li>UX_CommitteeMember_Unique: committee_id, executive_id (Unique)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="32-å--">3.2 å�� ���� ����<a href="#32-å--" class="hash-link" aria-label="3.2 å�� ���� ����에 대한 직접 링크" title="3.2 å�� ���� ����에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="321-duty-å-̺">3.2.1 Duty (å�� ���̺�)<a href="#321-duty-å-̺" class="hash-link" aria-label="3.2.1 Duty (å�� ���̺�)에 대한 직접 링크" title="3.2.1 Duty (å�� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>å�� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>duty_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>å�� ID</td><td>PK</td></tr><tr><td>duty_code</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>å�� �ڵ�</td><td>-</td></tr><tr><td>duty_name</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>å����</td><td>-</td></tr><tr><td>duty_type</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>å�� ����</td><td>-</td></tr><tr><td>description</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>å�� ����</td><td>-</td></tr><tr><td>parent_duty_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� å�� ID</td><td>FK(Duty)</td></tr><tr><td>duty_level</td><td>INT</td><td>-</td><td>NO</td><td>0</td><td>å�� ����</td><td>-</td></tr><tr><td>priority</td><td>INT</td><td>-</td><td>YES</td><td>NULL</td><td>�켱����</td><td>-</td></tr><tr><td>reg_basis</td><td>VARCHAR</td><td>500</td><td>YES</td><td>NULL</td><td>���� �ٰ�</td><td>-</td></tr><tr><td>version</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;1.0&#x27;</td><td>����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Duty: duty_id (Primary Key)</li>
+<li>FK_Duty_ParentDuty: parent_duty_id (Foreign Key)</li>
+<li>IX_Duty_Code: duty_code</li>
+<li>IX_Duty_Name: duty_name</li>
+<li>IX_Duty_Type: duty_type</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="322-dutydescription-å-̺">3.2.2 DutyDescription (å������� ���̺�)<a href="#322-dutydescription-å-̺" class="hash-link" aria-label="3.2.2 DutyDescription (å������� ���̺�)에 대한 직접 링크" title="3.2.2 DutyDescription (å������� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>å������� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>duty_desc_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>å������� ID</td><td>PK</td></tr><tr><td>duty_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>å�� ID</td><td>FK(Duty)</td></tr><tr><td>executive_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>�ӿ� ID</td><td>FK(Executive)</td></tr><tr><td>title</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>responsibilities</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>å�ӻ���</td><td>-</td></tr><tr><td>authority</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>version</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;1.0&#x27;</td><td>����</td><td>-</td></tr><tr><td>effective_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>expiry_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;DRAFT&#x27;</td><td>���� (�ʾ�/����/���)</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_DutyDescription: duty_desc_id (Primary Key)</li>
+<li>FK_DutyDescription_Duty: duty_id (Foreign Key)</li>
+<li>FK_DutyDescription_Executive: executive_id (Foreign Key)</li>
+<li>IX_DutyDescription_Title: title</li>
+<li>IX_DutyDescription_Status: status</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="323-executiveduty-ӿ-å--̺">3.2.3 ExecutiveDuty (�ӿ�-å�� ���� ���̺�)<a href="#323-executiveduty-ӿ-å--̺" class="hash-link" aria-label="3.2.3 ExecutiveDuty (�ӿ�-å�� ���� ���̺�)에 대한 직접 링크" title="3.2.3 ExecutiveDuty (�ӿ�-å�� ���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�ӿ��� å�� ���� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>exec_duty_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ӿ�-å�� ���� ID</td><td>PK</td></tr><tr><td>executive_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ӿ� ID</td><td>FK(Executive)</td></tr><tr><td>duty_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>å�� ID</td><td>FK(Duty)</td></tr><tr><td>assign_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>�Ҵ���</td><td>-</td></tr><tr><td>release_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>is_primary</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>FALSE</td><td>�ֿ� å�� ����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ExecutiveDuty: exec_duty_id (Primary Key)</li>
+<li>FK_ExecutiveDuty_Executive: executive_id (Foreign Key)</li>
+<li>FK_ExecutiveDuty_Duty: duty_id (Foreign Key)</li>
+<li>UX_ExecutiveDuty_Unique: executive_id, duty_id (Unique)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="324-dutyorganization-å---̺">3.2.4 DutyOrganization (å��-���� ���� ���̺�)<a href="#324-dutyorganization-å---̺" class="hash-link" aria-label="3.2.4 DutyOrganization (å��-���� ���� ���̺�)에 대한 직접 링크" title="3.2.4 DutyOrganization (å��-���� ���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>å���� ���� ���� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>duty_org_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>å��-���� ���� ID</td><td>PK</td></tr><tr><td>duty_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>å�� ID</td><td>FK(Duty)</td></tr><tr><td>org_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Organization)</td></tr><tr><td>assign_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>�Ҵ���</td><td>-</td></tr><tr><td>release_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_DutyOrganization: duty_org_id (Primary Key)</li>
+<li>FK_DutyOrganization_Duty: duty_id (Foreign Key)</li>
+<li>FK_DutyOrganization_Organization: org_id (Foreign Key)</li>
+<li>UX_DutyOrganization_Unique: duty_id, org_id (Unique)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="325-controlmanual--ŵ-̺">3.2.5 ControlManual (�������� �Ŵ��� ���̺�)<a href="#325-controlmanual--ŵ-̺" class="hash-link" aria-label="3.2.5 ControlManual (�������� �Ŵ��� ���̺�)에 대한 직접 링크" title="3.2.5 ControlManual (�������� �Ŵ��� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�������� �����Ŵ��� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>manual_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�Ŵ��� ID</td><td>PK</td></tr><tr><td>dept_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�μ� ID</td><td>FK(Department)</td></tr><tr><td>duty_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� å�� ID</td><td>FK(Duty)</td></tr><tr><td>manual_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�Ŵ��� ���� (����/�μ���)</td><td>-</td></tr><tr><td>title</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>version</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;1.0&#x27;</td><td>����</td><td>-</td></tr><tr><td>effective_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>expiry_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;DRAFT&#x27;</td><td>���� (�ʾ�/����/���)</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ControlManual: manual_id (Primary Key)</li>
+<li>FK_ControlManual_Department: dept_id (Foreign Key)</li>
+<li>FK_ControlManual_Duty: duty_id (Foreign Key)</li>
+<li>IX_ControlManual_Title: title</li>
+<li>IX_ControlManual_Type: manual_type</li>
+<li>IX_ControlManual_Status: status</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="33---">3.3 �������� ���� ����<a href="#33---" class="hash-link" aria-label="3.3 �������� ���� ����에 대한 직접 링크" title="3.3 �������� ���� ����에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="331-controlactivity-ȱ-̺">3.3.1 ControlActivity (��������Ȱ�� ���̺�)<a href="#331-controlactivity-ȱ-̺" class="hash-link" aria-label="3.3.1 ControlActivity (��������Ȱ�� ���̺�)에 대한 직접 링크" title="3.3.1 ControlActivity (��������Ȱ�� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>��������Ȱ�� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>activity_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>Ȱ�� ID</td><td>PK</td></tr><tr><td>dept_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�μ� ID</td><td>FK(Department)</td></tr><tr><td>manual_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� �Ŵ��� ID</td><td>FK(ControlManual)</td></tr><tr><td>activity_name</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>Ȱ����</td><td>-</td></tr><tr><td>description</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>Ȱ�� ����</td><td>-</td></tr><tr><td>activity_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>Ȱ�� ����</td><td>-</td></tr><tr><td>start_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>end_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;PLANNED&#x27;</td><td>���� (��ȹ/����/�Ϸ�)</td><td>-</td></tr><tr><td>responsible_user_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����� ID</td><td>FK(User)</td></tr><tr><td>approved_by</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>approved_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ControlActivity: activity_id (Primary Key)</li>
+<li>FK_ControlActivity_Department: dept_id (Foreign Key)</li>
+<li>FK_ControlActivity_ControlManual: manual_id (Foreign Key)</li>
+<li>FK_ControlActivity_User_Responsible: responsible_user_id (Foreign Key)</li>
+<li>FK_ControlActivity_User_Approver: approved_by (Foreign Key)</li>
+<li>IX_ControlActivity_Status: status</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="332-checklist-üũʈ-̺">3.3.2 Checklist (üũ����Ʈ ���̺�)<a href="#332-checklist-üũʈ-̺" class="hash-link" aria-label="3.3.2 Checklist (üũ����Ʈ ���̺�)에 대한 직접 링크" title="3.3.2 Checklist (üũ����Ʈ ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�������� üũ����Ʈ ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>checklist_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>üũ����Ʈ ID</td><td>PK</td></tr><tr><td>manual_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� �Ŵ��� ID</td><td>FK(ControlManual)</td></tr><tr><td>checklist_name</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>üũ����Ʈ��</td><td>-</td></tr><tr><td>description</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>checklist_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>üũ����Ʈ ����</td><td>-</td></tr><tr><td>version</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;1.0&#x27;</td><td>����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Checklist: checklist_id (Primary Key)</li>
+<li>FK_Checklist_ControlManual: manual_id (Foreign Key)</li>
+<li>IX_Checklist_Name: checklist_name</li>
+<li>IX_Checklist_Type: checklist_type</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="333-checklistitem-üũʈ--̺">3.3.3 ChecklistItem (üũ����Ʈ �׸� ���̺�)<a href="#333-checklistitem-üũʈ--̺" class="hash-link" aria-label="3.3.3 ChecklistItem (üũ����Ʈ �׸� ���̺�)에 대한 직접 링크" title="3.3.3 ChecklistItem (üũ����Ʈ �׸� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>üũ����Ʈ �׸� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>item_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�׸� ID</td><td>PK</td></tr><tr><td>checklist_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>üũ����Ʈ ID</td><td>FK(Checklist)</td></tr><tr><td>item_no</td><td>INT</td><td>-</td><td>NO</td><td>-</td><td>�׸� ��ȣ</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>NO</td><td>-</td><td>�׸� ����</td><td>-</td></tr><tr><td>item_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�׸� ����</td><td>-</td></tr><tr><td>is_required</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>�ʼ� ����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ChecklistItem: item_id (Primary Key)</li>
+<li>FK_ChecklistItem_Checklist: checklist_id (Foreign Key)</li>
+<li>IX_ChecklistItem_No: checklist_id, item_no</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="334-inspection--̺">3.3.4 Inspection (�������� ���̺�)<a href="#334-inspection--̺" class="hash-link" aria-label="3.3.4 Inspection (�������� ���̺�)에 대한 직접 링크" title="3.3.4 Inspection (�������� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�������� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>inspection_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�������� ID</td><td>PK</td></tr><tr><td>dept_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�μ� ID</td><td>FK(Department)</td></tr><tr><td>checklist_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>üũ����Ʈ ID</td><td>FK(Checklist)</td></tr><tr><td>activity_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� Ȱ�� ID</td><td>FK(ControlActivity)</td></tr><tr><td>inspection_name</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>�������˸�</td><td>-</td></tr><tr><td>description</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>inspection_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�������� ����</td><td>-</td></tr><tr><td>inspection_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;PLANNED&#x27;</td><td>���� (��ȹ/����/�Ϸ�)</td><td>-</td></tr><tr><td>inspector_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>reviewer_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>reviewed_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>approver_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>approved_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>result</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>��� (����/������)</td><td>-</td></tr><tr><td>comment</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>�ڸ�Ʈ</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Inspection: inspection_id (Primary Key)</li>
+<li>FK_Inspection_Department: dept_id (Foreign Key)</li>
+<li>FK_Inspection_Checklist: checklist_id (Foreign Key)</li>
+<li>FK_Inspection_ControlActivity: activity_id (Foreign Key)</li>
+<li>FK_Inspection_User_Inspector: inspector_id (Foreign Key)</li>
+<li>FK_Inspection_User_Reviewer: reviewer_id (Foreign Key)</li>
+<li>FK_Inspection_User_Approver: approver_id (Foreign Key)</li>
+<li>IX_Inspection_Date: inspection_date</li>
+<li>IX_Inspection_Status: status</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="335-inspectiondetail---̺">3.3.5 InspectionDetail (�������� �� ���̺�)<a href="#335-inspectiondetail---̺" class="hash-link" aria-label="3.3.5 InspectionDetail (�������� �� ���̺�)에 대한 직접 링크" title="3.3.5 InspectionDetail (�������� �� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�������� �׸� ����� �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>inspection_detail_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�������� �� ID</td><td>PK</td></tr><tr><td>inspection_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�������� ID</td><td>FK(Inspection)</td></tr><tr><td>item_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>üũ����Ʈ �׸� ID</td><td>FK(ChecklistItem)</td></tr><tr><td>result</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>��� (����/������/�ش����)</td><td>-</td></tr><tr><td>evidence</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>��������</td><td>-</td></tr><tr><td>comment</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>�ڸ�Ʈ</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_InspectionDetail: inspection_detail_id (Primary Key)</li>
+<li>FK_InspectionDetail_Inspection: inspection_id (Foreign Key)</li>
+<li>FK_InspectionDetail_ChecklistItem: item_id (Foreign Key)</li>
+<li>IX_InspectionDetail_Result: result</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="336-improvement-ȹ-̺">3.3.6 Improvement (��������/������ȹ ���̺�)<a href="#336-improvement-ȹ-̺" class="hash-link" aria-label="3.3.6 Improvement (��������/������ȹ ���̺�)에 대한 직접 링크" title="3.3.6 Improvement (��������/������ȹ ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�������� �� ������ȹ ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>improvement_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ȹ ID</td><td>PK</td></tr><tr><td>inspection_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�������� ID</td><td>FK(Inspection)</td></tr><tr><td>inspection_detail_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>�������� �� ID</td><td>FK(InspectionDetail)</td></tr><tr><td>issue_description</td><td>TEXT</td><td>-</td><td>NO</td><td>-</td><td>�������� ����</td><td>-</td></tr><tr><td>cause</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>improvement_plan</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>������ȹ</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;OPEN&#x27;</td><td>���� (����/����/�Ϸ�)</td><td>-</td></tr><tr><td>priority</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;MEDIUM&#x27;</td><td>�켱���� (��/��/��)</td><td>-</td></tr><tr><td>due_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>�ϷΌ����</td><td>-</td></tr><tr><td>responsible_user_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����� ID</td><td>FK(User)</td></tr><tr><td>completed_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>�Ϸ���</td><td>-</td></tr><tr><td>verification_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>verified_by</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Improvement: improvement_id (Primary Key)</li>
+<li>FK_Improvement_Inspection: inspection_id (Foreign Key)</li>
+<li>FK_Improvement_InspectionDetail: inspection_detail_id (Foreign Key)</li>
+<li>FK_Improvement_User_Responsible: responsible_user_id (Foreign Key)</li>
+<li>FK_Improvement_User_Verifier: verified_by (Foreign Key)</li>
+<li>IX_Improvement_Status: status</li>
+<li>IX_Improvement_Priority: priority</li>
+<li>IX_Improvement_DueDate: due_date</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="34---">3.4 ������ ���� ����<a href="#34---" class="hash-link" aria-label="3.4 ������ ���� ����에 대한 직접 링크" title="3.4 ������ ���� ����에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="341-report--̺">3.4.1 Report (������ ���̺�)<a href="#341-report--̺" class="hash-link" aria-label="3.4.1 Report (������ ���̺�)에 대한 직접 링크" title="3.4.1 Report (������ ���̺�)에 대한 직접 링크">​</a></h4>
+<p>������ ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>report_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ ID</td><td>PK</td></tr><tr><td>report_type</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������ ����</td><td>-</td></tr><tr><td>title</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>description</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>format</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;PDF&#x27;</td><td>���� (PDF/EXCEL/WORD)</td><td>-</td></tr><tr><td>report_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>target</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>��� (����/�������)</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;DRAFT&#x27;</td><td>���� (�ʾ�/����/����)</td><td>-</td></tr><tr><td>creator_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ۼ��� ID</td><td>FK(User)</td></tr><tr><td>approver_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>approved_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>submitted_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>version</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;1.0&#x27;</td><td>����</td><td>-</td></tr><tr><td>file_path</td><td>VARCHAR</td><td>255</td><td>YES</td><td>NULL</td><td>���� ���</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Report: report_id (Primary Key)</li>
+<li>FK_Report_User_Creator: creator_id (Foreign Key)</li>
+<li>FK_Report_User_Approver: approver_id (Foreign Key)</li>
+<li>IX_Report_Type: report_type</li>
+<li>IX_Report_Date: report_date</li>
+<li>IX_Report_Status: status</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="342-reporttemplate--ø-̺">3.4.2 ReportTemplate (������ ���ø� ���̺�)<a href="#342-reporttemplate--ø-̺" class="hash-link" aria-label="3.4.2 ReportTemplate (������ ���ø� ���̺�)에 대한 직접 링크" title="3.4.2 ReportTemplate (������ ���ø� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>������ ���ø� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>template_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���ø� ID</td><td>PK</td></tr><tr><td>template_name</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>���ø���</td><td>-</td></tr><tr><td>template_type</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>���ø� ����</td><td>-</td></tr><tr><td>description</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>format</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;PDF&#x27;</td><td>���� (PDF/EXCEL/WORD)</td><td>-</td></tr><tr><td>version</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;1.0&#x27;</td><td>����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ReportTemplate: template_id (Primary Key)</li>
+<li>IX_ReportTemplate_Name: template_name</li>
+<li>IX_ReportTemplate_Type: template_type</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="343-reportattachment---̺">3.4.3 ReportAttachment (������ ÷������ ���̺�)<a href="#343-reportattachment---̺" class="hash-link" aria-label="3.4.3 ReportAttachment (������ ÷������ ���̺�)에 대한 직접 링크" title="3.4.3 ReportAttachment (������ ÷������ ���̺�)에 대한 직접 링크">​</a></h4>
+<p>������ ÷������ ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>attachment_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>÷������ ID</td><td>PK</td></tr><tr><td>report_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ ID</td><td>FK(Report)</td></tr><tr><td>file_name</td><td>VARCHAR</td><td>255</td><td>NO</td><td>-</td><td>���ϸ�</td><td>-</td></tr><tr><td>file_path</td><td>VARCHAR</td><td>255</td><td>NO</td><td>-</td><td>���� ���</td><td>-</td></tr><tr><td>file_type</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>���� ����</td><td>-</td></tr><tr><td>file_size</td><td>INT</td><td>-</td><td>NO</td><td>-</td><td>���� ũ��(byte)</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>255</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ReportAttachment: attachment_id (Primary Key)</li>
+<li>FK_ReportAttachment_Report: report_id (Foreign Key)</li>
+<li>IX_ReportAttachment_FileName: file_name</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="35---">3.5 ���� ���� ����<a href="#35---" class="hash-link" aria-label="3.5 ���� ���� ����에 대한 직접 링크" title="3.5 ���� ���� ����에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="351-document--̺">3.5.1 Document (���� ���̺�)<a href="#351-document--̺" class="hash-link" aria-label="3.5.1 Document (���� ���̺�)에 대한 직접 링크" title="3.5.1 Document (���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���� ��� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>document_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>PK</td></tr><tr><td>document_type</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>���� ����</td><td>-</td></tr><tr><td>title</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>target_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>��� ID (å��/�Ŵ���/���� ��)</td><td>-</td></tr><tr><td>target_type</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>��� ����</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;DRAFT&#x27;</td><td>���� (�ʾ�/����/�Ϸ�/�ݷ�)</td><td>-</td></tr><tr><td>creator_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ۼ��� ID</td><td>FK(User)</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Document: document_id (Primary Key)</li>
+<li>FK_Document_User: creator_id (Foreign Key)</li>
+<li>IX_Document_Type: document_type</li>
+<li>IX_Document_Status: status</li>
+<li>IX_Document_Target: target_id, target_type</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="352-approval--̺">3.5.2 Approval (���� ���̺�)<a href="#352-approval--̺" class="hash-link" aria-label="3.5.2 Approval (���� ���̺�)에 대한 직접 링크" title="3.5.2 Approval (���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>approval_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>PK</td></tr><tr><td>document_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Document)</td></tr><tr><td>approval_line_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���缱 ID</td><td>FK(ApprovalLine)</td></tr><tr><td>title</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;REQUESTED&#x27;</td><td>���� (��û/����/����/�ݷ�)</td><td>-</td></tr><tr><td>requester_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>��û�� ID</td><td>FK(User)</td></tr><tr><td>requested_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>��û�Ͻ�</td><td>-</td></tr><tr><td>completed_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�Ϸ��Ͻ�</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Approval: approval_id (Primary Key)</li>
+<li>FK_Approval_Document: document_id (Foreign Key)</li>
+<li>FK_Approval_ApprovalLine: approval_line_id (Foreign Key)</li>
+<li>FK_Approval_User: requester_id (Foreign Key)</li>
+<li>IX_Approval_Status: status</li>
+<li>IX_Approval_RequestedAt: requested_at</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="353-approvalline-缱-̺">3.5.3 ApprovalLine (���缱 ���̺�)<a href="#353-approvalline-缱-̺" class="hash-link" aria-label="3.5.3 ApprovalLine (���缱 ���̺�)에 대한 직접 링크" title="3.5.3 ApprovalLine (���缱 ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���缱 ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>approval_line_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���缱 ID</td><td>PK</td></tr><tr><td>line_name</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>���缱��</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>255</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>document_type</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>���� ����</td><td>-</td></tr><tr><td>is_template</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>FALSE</td><td>���ø� ����</td><td>-</td></tr><tr><td>creator_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ApprovalLine: approval_line_id (Primary Key)</li>
+<li>FK_ApprovalLine_User: creator_id (Foreign Key)</li>
+<li>IX_ApprovalLine_Name: line_name</li>
+<li>IX_ApprovalLine_DocType: document_type</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="354-approvallinedetail-缱--̺">3.5.4 ApprovalLineDetail (���缱 �� ���̺�)<a href="#354-approvallinedetail-缱--̺" class="hash-link" aria-label="3.5.4 ApprovalLineDetail (���缱 �� ���̺�)에 대한 직접 링크" title="3.5.4 ApprovalLineDetail (���缱 �� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���缱 �� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>approval_line_detail_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���缱 �� ID</td><td>PK</td></tr><tr><td>approval_line_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���缱 ID</td><td>FK(ApprovalLine)</td></tr><tr><td>step</td><td>INT</td><td>-</td><td>NO</td><td>1</td><td>�ܰ�</td><td>-</td></tr><tr><td>approver_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>approver_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;APPROVER&#x27;</td><td>������ ���� (����/����/����)</td><td>-</td></tr><tr><td>is_mandatory</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>�ʼ� ����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ApprovalLineDetail: approval_line_detail_id (Primary Key)</li>
+<li>FK_ApprovalLineDetail_ApprovalLine: approval_line_id (Foreign Key)</li>
+<li>FK_ApprovalLineDetail_User: approver_id (Foreign Key)</li>
+<li>IX_ApprovalLineDetail_Step: approval_line_id, step</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="355-approvalhistory--̷-̺">3.5.5 ApprovalHistory (���� �̷� ���̺�)<a href="#355-approvalhistory--̷-̺" class="hash-link" aria-label="3.5.5 ApprovalHistory (���� �̷� ���̺�)에 대한 직접 링크" title="3.5.5 ApprovalHistory (���� �̷� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���� �̷� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>history_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�̷� ID</td><td>PK</td></tr><tr><td>approval_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Approval)</td></tr><tr><td>approval_line_detail_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���缱 �� ID</td><td>FK(ApprovalLineDetail)</td></tr><tr><td>approver_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>action</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�׼� (����/�ݷ�/����)</td><td>-</td></tr><tr><td>comment</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>�ڸ�Ʈ</td><td>-</td></tr><tr><td>action_date</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�׼��Ͻ�</td><td>-</td></tr><tr><td>delegated_to</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���ӹ��� ����� ID</td><td>FK(User)</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ApprovalHistory: history_id (Primary Key)</li>
+<li>FK_ApprovalHistory_Approval: approval_id (Foreign Key)</li>
+<li>FK_ApprovalHistory_ApprovalLineDetail: approval_line_detail_id (Foreign Key)</li>
+<li>FK_ApprovalHistory_User_Approver: approver_id (Foreign Key)</li>
+<li>FK_ApprovalHistory_User_Delegated: delegated_to (Foreign Key)</li>
+<li>IX_ApprovalHistory_ActionDate: action_date</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="36-ý--">3.6 �ý��� ���� ����<a href="#36-ý--" class="hash-link" aria-label="3.6 �ý��� ���� ����에 대한 직접 링크" title="3.6 �ý��� ���� ����에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="361-user--̺">3.6.1 User (����� ���̺�)<a href="#361-user--̺" class="hash-link" aria-label="3.6.1 User (����� ���̺�)에 대한 직접 링크" title="3.6.1 User (����� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>����� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>user_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����� ID</td><td>PK</td></tr><tr><td>username</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>����ڸ�</td><td>-</td></tr><tr><td>employee_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>������ȣ</td><td>-</td></tr><tr><td>email</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>�̸���</td><td>-</td></tr><tr><td>password</td><td>VARCHAR</td><td>255</td><td>NO</td><td>-</td><td>��ȣȭ�� ��й�ȣ</td><td>-</td></tr><tr><td>dept_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>�μ� ID</td><td>FK(Department)</td></tr><tr><td>position</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>phone</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>��ȭ��ȣ</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;ACTIVE&#x27;</td><td>���� (Ȱ��/��Ȱ��/���)</td><td>-</td></tr><tr><td>last_login</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>������ �α���</td><td>-</td></tr><tr><td>is_admin</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>FALSE</td><td>������ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_User: user_id (Primary Key)</li>
+<li>FK_User_Department: dept_id (Foreign Key)</li>
+<li>UX_User_Username: username (Unique)</li>
+<li>UX_User_Email: email (Unique)</li>
+<li>IX_User_EmployeeId: employee_id</li>
+<li>IX_User_Status: status</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="362-role--̺">3.6.2 Role (���� ���̺�)<a href="#362-role--̺" class="hash-link" aria-label="3.6.2 Role (���� ���̺�)에 대한 직접 링크" title="3.6.2 Role (���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>����� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>role_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>PK</td></tr><tr><td>role_name</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>���Ҹ�</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>255</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Role: role_id (Primary Key)</li>
+<li>UX_Role_Name: role_name (Unique)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="363-userrole----̺">3.6.3 UserRole (�����-���� ���� ���̺�)<a href="#363-userrole----̺" class="hash-link" aria-label="3.6.3 UserRole (�����-���� ���� ���̺�)에 대한 직접 링크" title="3.6.3 UserRole (�����-���� ���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>����ڿ� ���� ���� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>user_role_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�����-���� ���� ID</td><td>PK</td></tr><tr><td>user_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����� ID</td><td>FK(User)</td></tr><tr><td>role_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Role)</td></tr><tr><td>granted_date</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�ο��Ͻ�</td><td>-</td></tr><tr><td>granted_by</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ο��� ID</td><td>FK(User)</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_UserRole: user_role_id (Primary Key)</li>
+<li>FK_UserRole_User: user_id (Foreign Key)</li>
+<li>FK_UserRole_Role: role_id (Foreign Key)</li>
+<li>FK_UserRole_User_Granter: granted_by (Foreign Key)</li>
+<li>UX_UserRole_Unique: user_id, role_id (Unique)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="364-permission--̺">3.6.4 Permission (���� ���̺�)<a href="#364-permission--̺" class="hash-link" aria-label="3.6.4 Permission (���� ���̺�)에 대한 직접 링크" title="3.6.4 Permission (���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�ý��� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>permission_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>PK</td></tr><tr><td>permission_name</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>���Ѹ�</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>255</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>resource</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>�ڿ� (�޴�/���)</td><td>-</td></tr><tr><td>action</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�׼� (��ȸ/����/����/����)</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Permission: permission_id (Primary Key)</li>
+<li>UX_Permission_Name: permission_name (Unique)</li>
+<li>IX_Permission_Resource: resource, action</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="365-rolepermission----̺">3.6.5 RolePermission (����-���� ���� ���̺�)<a href="#365-rolepermission----̺" class="hash-link" aria-label="3.6.5 RolePermission (����-���� ���� ���̺�)에 대한 직접 링크" title="3.6.5 RolePermission (����-���� ���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���Ұ� ���� ���� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>role_permission_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����-���� ���� ID</td><td>PK</td></tr><tr><td>role_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Role)</td></tr><tr><td>permission_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Permission)</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_RolePermission: role_permission_id (Primary Key)</li>
+<li>FK_RolePermission_Role: role_id (Foreign Key)</li>
+<li>FK_RolePermission_Permission: permission_id (Foreign Key)</li>
+<li>UX_RolePermission_Unique: role_id, permission_id (Unique)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="366-code-ڵ-̺">3.6.6 Code (�ڵ� ���̺�)<a href="#366-code-ڵ-̺" class="hash-link" aria-label="3.6.6 Code (�ڵ� ���̺�)에 대한 직접 링크" title="3.6.6 Code (�ڵ� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�ý��� �ڵ� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>code_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ڵ� ID</td><td>PK</td></tr><tr><td>code_group</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>�ڵ� �׷�</td><td>-</td></tr><tr><td>code</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>�ڵ�</td><td>-</td></tr><tr><td>code_name</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>�ڵ��</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>255</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>sort_order</td><td>INT</td><td>-</td><td>NO</td><td>0</td><td>���� ����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Code: code_id (Primary Key)</li>
+<li>UX_Code_Unique: code_group, code (Unique)</li>
+<li>IX_Code_Group: code_group</li>
+<li>IX_Code_SortOrder: code_group, sort_order</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="367-auditlog--α-̺">3.6.7 AuditLog (���� �α� ���̺�)<a href="#367-auditlog--α-̺" class="hash-link" aria-label="3.6.7 AuditLog (���� �α� ���̺�)에 대한 직접 링크" title="3.6.7 AuditLog (���� �α� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�ý��� ���� �α� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>log_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�α� ID</td><td>PK</td></tr><tr><td>user_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>����� ID</td><td>FK(User)</td></tr><tr><td>action</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�׼� (�α���/�α׾ƿ�/��ȸ/����/����/����)</td><td>-</td></tr><tr><td>entity_type</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>��ƼƼ ����</td><td>-</td></tr><tr><td>entity_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>��ƼƼ ID</td><td>-</td></tr><tr><td>description</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>ip_address</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>IP �ּ�</td><td>-</td></tr><tr><td>user_agent</td><td>VARCHAR</td><td>255</td><td>YES</td><td>NULL</td><td>����� ������Ʈ</td><td>-</td></tr><tr><td>log_date</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�α� �Ͻ�</td><td>-</td></tr><tr><td>additional_info</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>�߰� ����</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_AuditLog: log_id (Primary Key)</li>
+<li>FK_AuditLog_User: user_id (Foreign Key)</li>
+<li>IX_AuditLog_Action: action</li>
+<li>IX_AuditLog_Entity: entity_type, entity_id</li>
+<li>IX_AuditLog_LogDate: log_date</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="368-notification--̺">3.6.8 Notification (�˸� ���̺�)<a href="#368-notification--̺" class="hash-link" aria-label="3.6.8 Notification (�˸� ���̺�)에 대한 직접 링크" title="3.6.8 Notification (�˸� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�ý��� �˸� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>notification_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�˸� ID</td><td>PK</td></tr><tr><td>user_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����� ID</td><td>FK(User)</td></tr><tr><td>notification_type</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>�˸� ����</td><td>-</td></tr><tr><td>title</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>related_entity_type</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>���� ��ƼƼ ����</td><td>-</td></tr><tr><td>related_entity_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� ��ƼƼ ID</td><td>-</td></tr><tr><td>is_read</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>FALSE</td><td>���� ����</td><td>-</td></tr><tr><td>read_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>���� �Ͻ�</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>expires_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Notification: notification_id (Primary Key)</li>
+<li>FK_Notification_User: user_id (Foreign Key)</li>
+<li>IX_Notification_Type: notification_type</li>
+<li>IX_Notification_IsRead: user_id, is_read</li>
+<li>IX_Notification_CreatedAt: created_at</li>
+<li>IX_Notification_Entity: related_entity_type, related_entity_id</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="4-ͺ̽---">4. �����ͺ��̽� ���� �� ��������<a href="#4-ͺ̽---" class="hash-link" aria-label="4. �����ͺ��̽� ���� �� ��������에 대한 직접 링크" title="4. �����ͺ��̽� ���� �� ��������에 대한 직접 링크">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="41-ֿ-">4.1 �ֿ� ����<a href="#41-ֿ-" class="hash-link" aria-label="4.1 �ֿ� ����에 대한 직접 링크" title="4.1 �ֿ� ����에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="411-λ--">4.1.1 ����/�λ� ���� ����<a href="#411-λ--" class="hash-link" aria-label="4.1.1 ����/�λ� ���� ����에 대한 직접 링크" title="4.1.1 ����/�λ� ���� ����에 대한 직접 링크">​</a></h4>
+<ul>
+<li><strong>Organization - Department</strong>: �ϳ��� ������ ���� �μ��� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Department - Executive</strong>: �ϳ��� �μ��� ���� �ӿ�/�μ����� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Organization - Executive</strong>: �ϳ��� ������ ���� �ӿ��� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Committee - CommitteeMember</strong>: �ϳ��� ����ü�� ���� �������� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Executive - CommitteeMember</strong>: �ϳ��� �ӿ��� ���� ����ü �������� �� �� ���� (1<!-- -->:N<!-- -->)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="412-å--">4.1.2 å�� ���� ����<a href="#412-å--" class="hash-link" aria-label="4.1.2 å�� ���� ����에 대한 직접 링크" title="4.1.2 å�� ���� ����에 대한 직접 링크">​</a></h4>
+<ul>
+<li><strong>Duty - DutyDescription</strong>: �ϳ��� å���� ���� å��������� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Duty - ExecutiveDuty</strong>: �ϳ��� å���� ���� �ӿ����� �Ҵ�� �� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Executive - ExecutiveDuty</strong>: �ϳ��� �ӿ����� ���� å���� �Ҵ�� �� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Duty - DutyOrganization</strong>: �ϳ��� å���� ���� ������ �Ҵ�� �� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Organization - DutyOrganization</strong>: �ϳ��� ������ ���� å���� �Ҵ�� �� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Duty - ControlManual</strong>: �ϳ��� å���� ���� �������� �Ŵ����� ������ �� ���� (1<!-- -->:N<!-- -->)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="413---">4.1.3 �������� ���� ����<a href="#413---" class="hash-link" aria-label="4.1.3 �������� ���� ����에 대한 직접 링크" title="4.1.3 �������� ���� ����에 대한 직접 링크">​</a></h4>
+<ul>
+<li><strong>Department - ControlActivity</strong>: �ϳ��� �μ����� ���� ��������Ȱ���� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>ControlManual - ControlActivity</strong>: �ϳ��� �Ŵ��� ���� ��������Ȱ���� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>ControlManual - Checklist</strong>: �ϳ��� �Ŵ��� ���� üũ����Ʈ�� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Checklist - ChecklistItem</strong>: �ϳ��� üũ����Ʈ�� ���� �׸��� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Department - Inspection</strong>: �ϳ��� �μ����� ���� ���������� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Checklist - Inspection</strong>: �ϳ��� üũ����Ʈ�� ���� ���������� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>ControlActivity - Inspection</strong>: �ϳ��� ��������Ȱ���� ���� ���������� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Inspection - InspectionDetail</strong>: �ϳ��� �������˿� ���� �� ����� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>ChecklistItem - InspectionDetail</strong>: �ϳ��� üũ����Ʈ �׸� ���� ���� �������� �� ����� ���� �� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Inspection - Improvement</strong>: �ϳ��� �������˿� ���� ��������/������ȹ�� ���� �� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>InspectionDetail - Improvement</strong>: �ϳ��� �������� �󼼿� ���� ��������/������ȹ�� ���� �� ���� (1<!-- -->:N<!-- -->)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="414---">4.1.4 ������ ���� ����<a href="#414---" class="hash-link" aria-label="4.1.4 ������ ���� ����에 대한 직접 링크" title="4.1.4 ������ ���� ����에 대한 직접 링크">​</a></h4>
+<ul>
+<li><strong>Report - ReportAttachment</strong>: �ϳ��� �������� ���� ÷�������� ���� �� ���� (1<!-- -->:N<!-- -->)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="415---">4.1.5 ���� ���� ����<a href="#415---" class="hash-link" aria-label="4.1.5 ���� ���� ����에 대한 직접 링크" title="4.1.5 ���� ���� ����에 대한 직접 링크">​</a></h4>
+<ul>
+<li><strong>Document - Approval</strong>: �ϳ��� ������ ���� ���簡 ���� �� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>ApprovalLine - Approval</strong>: �ϳ��� ���缱���� ���� ���簡 �̷���� �� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>ApprovalLine - ApprovalLineDetail</strong>: �ϳ��� ���缱�� ���� �����ڰ� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Approval - ApprovalHistory</strong>: �ϳ��� ���翡 ���� �̷��� ���� �� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>ApprovalLineDetail - ApprovalHistory</strong>: �ϳ��� ���缱 �󼼿� ���� �̷��� ���� �� ���� (1<!-- -->:N<!-- -->)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="416---">4.1.6 �����/���� ���� ����<a href="#416---" class="hash-link" aria-label="4.1.6 �����/���� ���� ����에 대한 직접 링크" title="4.1.6 �����/���� ���� ����에 대한 직접 링크">​</a></h4>
+<ul>
+<li><strong>User - UserRole</strong>: �ϳ��� ����ڰ� ���� ������ ���� �� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Role - UserRole</strong>: �ϳ��� ���ҿ� ���� ����ڰ� �Ҵ�� �� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Role - RolePermission</strong>: �ϳ��� ���ҿ� ���� ������ �Ҵ�� �� ���� (1<!-- -->:N<!-- -->)</li>
+<li><strong>Permission - RolePermission</strong>: �ϳ��� ������ ���� ���ҿ� �Ҵ�� �� ���� (1<!-- -->:N<!-- -->)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="42-ֿ-">4.2 �ֿ� ��������<a href="#42-ֿ-" class="hash-link" aria-label="4.2 �ֿ� ��������에 대한 직접 링크" title="4.2 �ֿ� ��������에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="421--ű-">4.2.1 �⺻ Ű ��������<a href="#421--ű-" class="hash-link" aria-label="4.2.1 �⺻ Ű ��������에 대한 직접 링크" title="4.2.1 �⺻ Ű ��������에 대한 직접 링크">​</a></h4>
+<ul>
+<li>��� ���̺��� ������ �⺻ Ű(Primary Key)�� ����</li>
+<li>�⺻ Ű�� UUID �Ǵ� �������� Ȱ���Ͽ� ����</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="422-ܷ-ű-">4.2.2 �ܷ� Ű ��������<a href="#422-ܷ-ű-" class="hash-link" aria-label="4.2.2 �ܷ� Ű ��������에 대한 직접 링크" title="4.2.2 �ܷ� Ű ��������에 대한 직접 링크">​</a></h4>
+<ul>
+<li>���� ���Ἲ�� ���� �ܷ� Ű(Foreign Key) �������� ����</li>
+<li>�θ� ���ڵ� ���� �� �ڽ� ���ڵ� ó�� ��� ���� (CASCADE, SET NULL, RESTRICT ��)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="423--">4.2.3 ���� ��������<a href="#423--" class="hash-link" aria-label="4.2.3 ���� ��������에 대한 직접 링크" title="4.2.3 ���� ��������에 대한 직접 링크">​</a></h4>
+<ul>
+<li>�ߺ� ������ ������ ���� ����(Unique) �������� ����</li>
+<li>�ڵ�, ����ڸ�, �̸��� �� �����ؾ� �ϴ� �ʵ忡 ����</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="424-null-">4.2.4 NULL ��������<a href="#424-null-" class="hash-link" aria-label="4.2.4 NULL ��������에 대한 직접 링크" title="4.2.4 NULL ��������에 대한 직접 링크">​</a></h4>
+<ul>
+<li>�ʼ� �ʵ忡 ���� NOT NULL �������� ����</li>
+<li>������ �ʵ�� NULL ���</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="425--">4.2.5 �⺻�� ��������<a href="#425--" class="hash-link" aria-label="4.2.5 �⺻�� ��������에 대한 직접 링크" title="4.2.5 �⺻�� ��������에 대한 직접 링크">​</a></h4>
+<ul>
+<li>�����Ͻ�, ���� �� �⺻���� �ʿ��� �ʵ忡 DEFAULT �������� ����</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="5--̱̼">5. ������ ���̱׷��̼�<a href="#5--̱̼" class="hash-link" aria-label="5. ������ ���̱׷��̼�에 대한 직접 링크" title="5. ������ ���̱׷��̼�에 대한 직접 링크">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="51-̱̼-">5.1 ���̱׷��̼� ����<a href="#51-̱̼-" class="hash-link" aria-label="5.1 ���̱׷��̼� ����에 대한 직접 링크" title="5.1 ���̱׷��̼� ����에 대한 직접 링크">​</a></h3>
+<ul>
+<li>�ܰ��� ���̱׷��̼� ���� ��� ä��</li>
+<li>���� �ý��� ������ �м� �� ����</li>
+<li>ETL(Extract, Transform, Load) ���μ��� ����</li>
+<li>������ ���� �� ���� ���� ����</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="52-̱̼--">5.2 ���̱׷��̼� ��� ������<a href="#52-̱̼--" class="hash-link" aria-label="5.2 ���̱׷��̼� ��� ������에 대한 직접 링크" title="5.2 ���̱׷��̼� ��� ������에 대한 직접 링크">​</a></h3>
+<ul>
+<li>���� �� �μ� ����</li>
+<li>�ӿ� �� �μ��� ����</li>
+<li>å�� �� å������� ����</li>
+<li>�������� �Ŵ��� ����</li>
+<li>�������� �̷� ����</li>
+<li>����� �� ���� ����</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="53-̱̼-">5.3 ���̱׷��̼� ����<a href="#53-̱̼-" class="hash-link" aria-label="5.3 ���̱׷��̼� ����에 대한 직접 링크" title="5.3 ���̱׷��̼� ����에 대한 직접 링크">​</a></h3>
+<ol>
+<li>�ҽ� ������ ���� �� �м�</li>
+<li>������ ��ȯ �� ����</li>
+<li>�׽�Ʈ ȯ�濡�� ������ �ε�</li>
+<li>������ ���� �� ���Ἲ Ȯ��</li>
+<li>���� ���� �� ��ε�</li>
+<li>� ȯ������ ������ ���̱׷��̼�</li>
+<li>���� ���� �� Ȯ��</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="6-ͺ̽--ȭ">6. �����ͺ��̽� ���� ����ȭ<a href="#6-ͺ̽--ȭ" class="hash-link" aria-label="6. �����ͺ��̽� ���� ����ȭ에 대한 직접 링크" title="6. �����ͺ��̽� ���� ����ȭ에 대한 직접 링크">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="61-ε-">6.1 �ε��� ����<a href="#61-ε-" class="hash-link" aria-label="6.1 �ε��� ����에 대한 직접 링크" title="6.1 �ε��� ����에 대한 직접 링크">​</a></h3>
+<ul>
+<li>��ȸ ���� ����� ���� ������ �ε��� ����</li>
+<li>���� �ε��� Ȱ��</li>
+<li>�ε��� ��� ����͸� �� ����ȭ</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="62-ƽŵ-">6.2 ��Ƽ�Ŵ� ����<a href="#62-ƽŵ-" class="hash-link" aria-label="6.2 ��Ƽ�Ŵ� ����에 대한 직접 링크" title="6.2 ��Ƽ�Ŵ� ����에 대한 직접 링크">​</a></h3>
+<ul>
+<li>��뷮 ���̺�(���� �α�, �̷� ���̺� ��)�� ���� ��Ƽ�Ŵ� ����</li>
+<li>�ð� ��� ��Ƽ�Ŵ� Ȱ��</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="63--ȭ">6.3 ���� ����ȭ<a href="#63--ȭ" class="hash-link" aria-label="6.3 ���� ����ȭ에 대한 직접 링크" title="6.3 ���� ����ȭ에 대한 직접 링크">​</a></h3>
+<ul>
+<li>���� ���Ǵ� ������ ���� ����ȭ</li>
+<li>���� ��ȹ �м� �� Ʃ��</li>
+<li>������ ���� ��� ����</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="64-ĳ-">6.4 ĳ�� ����<a href="#64-ĳ-" class="hash-link" aria-label="6.4 ĳ�� ����에 대한 직접 링크" title="6.4 ĳ�� ����에 대한 직접 링크">​</a></h3>
+<ul>
+<li>���� ��ȸ�Ǵ� �����Ϳ� ���� ĳ�� ����</li>
+<li>ĳ�� ��ȿȭ ���� ����</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="7---">7. ���� �� ����<a href="#7---" class="hash-link" aria-label="7. ���� �� ����에 대한 직접 링크" title="7. ���� �� ����에 대한 직접 링크">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="71--">7.1 ������ ����<a href="#71--" class="hash-link" aria-label="7.1 ������ ����에 대한 직접 링크" title="7.1 ������ ����에 대한 직접 링크">​</a></h3>
+<ul>
+<li>�߿� ������ ��ȣȭ ����</li>
+<li>���� ���� ��Ŀ���� ����</li>
+<li>�������� ��ȣ ��� ����</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="72--">7.2 ���� ����<a href="#72--" class="hash-link" aria-label="7.2 ���� ����에 대한 직접 링크" title="7.2 ���� ����에 대한 직접 링크">​</a></h3>
+<ul>
+<li>������ ���濡 ���� ���� �α� ���</li>
+<li>����� Ȱ�� ����͸�</li>
+<li>�̻� ���� Ž�� ��Ŀ���� ����</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="η">�η�<a href="#η" class="hash-link" aria-label="�η�에 대한 직접 링크" title="�η�에 대한 직접 링크">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="a--">A. ��� ����<a href="#a--" class="hash-link" aria-label="A. ��� ����에 대한 직접 링크" title="A. ��� ����에 대한 직접 링크">​</a></h3>
+<ul>
+<li><strong>PK</strong>: Primary Key (�⺻ Ű)</li>
+<li><strong>FK</strong>: Foreign Key (�ܷ� Ű)</li>
+<li><strong>UX</strong>: Unique Index (���� �ε���)</li>
+<li><strong>IX</strong>: Non-Unique Index (����� �ε���)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="b--̷">B. ���� �̷�<a href="#b--̷" class="hash-link" aria-label="B. ���� �̷�에 대한 직접 링크" title="B. ���� �̷�에 대한 직접 링크">​</a></h3>
+<table><thead><tr><th>����</th><th>����</th><th>������</th><th>���� ����</th><th>������</th></tr></thead><tbody><tr><td>1.0</td><td>2025-07-14</td><td>-</td><td>���� �ۼ�</td><td>-</td></tr><tr><td>comment</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Inspection: inspection_id (Primary Key)</li>
+<li>FK_Inspection_Department: dept_id (Foreign Key)</li>
+<li>FK_Inspection_Checklist: checklist_id (Foreign Key)</li>
+<li>FK_Inspection_ControlActivity: activity_id (Foreign Key)</li>
+<li>FK_Inspection_User_Inspector: inspector_id (Foreign Key)</li>
+<li>FK_Inspection_User_Reviewer: reviewer_id (Foreign Key)</li>
+<li>FK_Inspection_User_Approver: approver_id (Foreign Key)</li>
+<li>IX_Inspection_Date: inspection_date</li>
+<li>IX_Inspection_Status: status</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="335-inspectiondetail---̺-1">3.3.5 InspectionDetail (�������� �� ���̺�)<a href="#335-inspectiondetail---̺-1" class="hash-link" aria-label="3.3.5 InspectionDetail (�������� �� ���̺�)에 대한 직접 링크" title="3.3.5 InspectionDetail (�������� �� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�������� �׸� ����� �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>inspection_detail_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�������� �� ID</td><td>PK</td></tr><tr><td>inspection_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�������� ID</td><td>FK(Inspection)</td></tr><tr><td>item_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>üũ����Ʈ �׸� ID</td><td>FK(ChecklistItem)</td></tr><tr><td>result</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>��� (����/������/�ش����)</td><td>-</td></tr><tr><td>evidence</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>��������</td><td>-</td></tr><tr><td>comment</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>�ڸ�Ʈ</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_InspectionDetail: inspection_detail_id (Primary Key)</li>
+<li>FK_InspectionDetail_Inspection: inspection_id (Foreign Key)</li>
+<li>FK_InspectionDetail_ChecklistItem: item_id (Foreign Key)</li>
+<li>IX_InspectionDetail_Result: result</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="336-improvement-ȹ-̺-1">3.3.6 Improvement (��������/������ȹ ���̺�)<a href="#336-improvement-ȹ-̺-1" class="hash-link" aria-label="3.3.6 Improvement (��������/������ȹ ���̺�)에 대한 직접 링크" title="3.3.6 Improvement (��������/������ȹ ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�������� �� ������ȹ ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>improvement_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ȹ ID</td><td>PK</td></tr><tr><td>inspection_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�������� ID</td><td>FK(Inspection)</td></tr><tr><td>inspection_detail_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>�������� �� ID</td><td>FK(InspectionDetail)</td></tr><tr><td>issue_description</td><td>TEXT</td><td>-</td><td>NO</td><td>-</td><td>�������� ����</td><td>-</td></tr><tr><td>cause</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>improvement_plan</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>������ȹ</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;OPEN&#x27;</td><td>���� (����/����/�Ϸ�)</td><td>-</td></tr><tr><td>priority</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;MEDIUM&#x27;</td><td>�켱���� (��/��/��)</td><td>-</td></tr><tr><td>due_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>�ϷΌ����</td><td>-</td></tr><tr><td>responsible_user_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����� ID</td><td>FK(User)</td></tr><tr><td>completed_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>�Ϸ���</td><td>-</td></tr><tr><td>verification_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>verified_by</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Improvement: improvement_id (Primary Key)</li>
+<li>FK_Improvement_Inspection: inspection_id (Foreign Key)</li>
+<li>FK_Improvement_InspectionDetail: inspection_detail_id (Foreign Key)</li>
+<li>FK_Improvement_User_Responsible: responsible_user_id (Foreign Key)</li>
+<li>FK_Improvement_User_Verifier: verified_by (Foreign Key)</li>
+<li>IX_Improvement_Status: status</li>
+<li>IX_Improvement_Priority: priority</li>
+<li>IX_Improvement_DueDate: due_date</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="34----1">3.4 ������ ���� ����<a href="#34----1" class="hash-link" aria-label="3.4 ������ ���� ����에 대한 직접 링크" title="3.4 ������ ���� ����에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="341-report--̺-1">3.4.1 Report (������ ���̺�)<a href="#341-report--̺-1" class="hash-link" aria-label="3.4.1 Report (������ ���̺�)에 대한 직접 링크" title="3.4.1 Report (������ ���̺�)에 대한 직접 링크">​</a></h4>
+<p>������ ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>report_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ ID</td><td>PK</td></tr><tr><td>report_type</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������ ����</td><td>-</td></tr><tr><td>title</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>description</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>format</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;PDF&#x27;</td><td>���� (PDF/EXCEL/WORD)</td><td>-</td></tr><tr><td>report_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>target</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>��� (����/�������)</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;DRAFT&#x27;</td><td>���� (�ʾ�/����/����)</td><td>-</td></tr><tr><td>creator_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ۼ��� ID</td><td>FK(User)</td></tr><tr><td>approver_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>approved_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>submitted_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>version</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;1.0&#x27;</td><td>����</td><td>-</td></tr><tr><td>file_path</td><td>VARCHAR</td><td>255</td><td>YES</td><td>NULL</td><td>���� ���</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Report: report_id (Primary Key)</li>
+<li>FK_Report_User_Creator: creator_id (Foreign Key)</li>
+<li>FK_Report_User_Approver: approver_id (Foreign Key)</li>
+<li>IX_Report_Type: report_type</li>
+<li>IX_Report_Date: report_date</li>
+<li>IX_Report_Status: status</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="342-reporttemplate--ø-̺-1">3.4.2 ReportTemplate (������ ���ø� ���̺�)<a href="#342-reporttemplate--ø-̺-1" class="hash-link" aria-label="3.4.2 ReportTemplate (������ ���ø� ���̺�)에 대한 직접 링크" title="3.4.2 ReportTemplate (������ ���ø� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>������ ���ø� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>template_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���ø� ID</td><td>PK</td></tr><tr><td>template_name</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>���ø���</td><td>-</td></tr><tr><td>template_type</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>���ø� ����</td><td>-</td></tr><tr><td>description</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>format</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;PDF&#x27;</td><td>���� (PDF/EXCEL/WORD)</td><td>-</td></tr><tr><td>version</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;1.0&#x27;</td><td>����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ReportTemplate: template_id (Primary Key)</li>
+<li>IX_ReportTemplate_Name: template_name</li>
+<li>IX_ReportTemplate_Type: template_type</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="343-reportattachment---̺-1">3.4.3 ReportAttachment (������ ÷������ ���̺�)<a href="#343-reportattachment---̺-1" class="hash-link" aria-label="3.4.3 ReportAttachment (������ ÷������ ���̺�)에 대한 직접 링크" title="3.4.3 ReportAttachment (������ ÷������ ���̺�)에 대한 직접 링크">​</a></h4>
+<p>������ ÷������ ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>attachment_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>÷������ ID</td><td>PK</td></tr><tr><td>report_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ ID</td><td>FK(Report)</td></tr><tr><td>file_name</td><td>VARCHAR</td><td>255</td><td>NO</td><td>-</td><td>���ϸ�</td><td>-</td></tr><tr><td>file_path</td><td>VARCHAR</td><td>255</td><td>NO</td><td>-</td><td>���� ���</td><td>-</td></tr><tr><td>file_type</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>���� ����</td><td>-</td></tr><tr><td>file_size</td><td>INT</td><td>-</td><td>NO</td><td>-</td><td>���� ũ��(byte)</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>255</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ReportAttachment: attachment_id (Primary Key)</li>
+<li>FK_ReportAttachment_Report: report_id (Foreign Key)</li>
+<li>IX_ReportAttachment_FileName: file_name</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="35----1">3.5 ���� ���� ����<a href="#35----1" class="hash-link" aria-label="3.5 ���� ���� ����에 대한 직접 링크" title="3.5 ���� ���� ����에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="351-document--̺-1">3.5.1 Document (���� ���̺�)<a href="#351-document--̺-1" class="hash-link" aria-label="3.5.1 Document (���� ���̺�)에 대한 직접 링크" title="3.5.1 Document (���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���� ��� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>document_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>PK</td></tr><tr><td>document_type</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>���� ����</td><td>-</td></tr><tr><td>title</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>target_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>��� ID (å��/�Ŵ���/���� ��)</td><td>-</td></tr><tr><td>target_type</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>��� ����</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;DRAFT&#x27;</td><td>���� (�ʾ�/����/�Ϸ�/�ݷ�)</td><td>-</td></tr><tr><td>creator_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ۼ��� ID</td><td>FK(User)</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Document: document_id (Primary Key)</li>
+<li>FK_Document_User: creator_id (Foreign Key)</li>
+<li>IX_Document_Type: document_type</li>
+<li>IX_Document_Status: status</li>
+<li>IX_Document_Target: target_id, target_type</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="352-approval--̺-1">3.5.2 Approval (���� ���̺�)<a href="#352-approval--̺-1" class="hash-link" aria-label="3.5.2 Approval (���� ���̺�)에 대한 직접 링크" title="3.5.2 Approval (���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>approval_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>PK</td></tr><tr><td>document_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Document)</td></tr><tr><td>approval_line_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���缱 ID</td><td>FK(ApprovalLine)</td></tr><tr><td>title</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;REQUESTED&#x27;</td><td>���� (��û/����/����/�ݷ�)</td><td>-</td></tr><tr><td>requester_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>��û�� ID</td><td>FK(User)</td></tr><tr><td>requested_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>��û�Ͻ�</td><td>-</td></tr><tr><td>completed_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�Ϸ��Ͻ�</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Approval: approval_id (Primary Key)</li>
+<li>FK_Approval_Document: document_id (Foreign Key)</li>
+<li>FK_Approval_ApprovalLine: approval_line_id (Foreign Key)</li>
+<li>FK_Approval_User: requester_id (Foreign Key)</li>
+<li>IX_Approval_Status: status</li>
+<li>IX_Approval_RequestedAt: requested_at</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="353-approvalline-缱-̺-1">3.5.3 ApprovalLine (���缱 ���̺�)<a href="#353-approvalline-缱-̺-1" class="hash-link" aria-label="3.5.3 ApprovalLine (���缱 ���̺�)에 대한 직접 링크" title="3.5.3 ApprovalLine (���缱 ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���缱 ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>approval_line_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���缱 ID</td><td>PK</td></tr><tr><td>line_name</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>���缱��</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>255</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>document_type</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>���� ����</td><td>-</td></tr><tr><td>is_template</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>FALSE</td><td>���ø� ����</td><td>-</td></tr><tr><td>creator_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ApprovalLine: approval_line_id (Primary Key)</li>
+<li>FK_ApprovalLine_User: creator_id (Foreign Key)</li>
+<li>IX_ApprovalLine_Name: line_name</li>
+<li>IX_ApprovalLine_DocType: document_type</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="354-approvallinedetail-缱--̺-1">3.5.4 ApprovalLineDetail (���缱 �� ���̺�)<a href="#354-approvallinedetail-缱--̺-1" class="hash-link" aria-label="3.5.4 ApprovalLineDetail (���缱 �� ���̺�)에 대한 직접 링크" title="3.5.4 ApprovalLineDetail (���缱 �� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���缱 �� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>approval_line_detail_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���缱 �� ID</td><td>PK</td></tr><tr><td>approval_line_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���缱 ID</td><td>FK(ApprovalLine)</td></tr><tr><td>step</td><td>INT</td><td>-</td><td>NO</td><td>1</td><td>�ܰ�</td><td>-</td></tr><tr><td>approver_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>approver_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;APPROVER&#x27;</td><td>������ ���� (����/����/����)</td><td>-</td></tr><tr><td>is_mandatory</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>�ʼ� ����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ApprovalLineDetail: approval_line_detail_id (Primary Key)</li>
+<li>FK_ApprovalLineDetail_ApprovalLine: approval_line_id (Foreign Key)</li>
+<li>FK_ApprovalLineDetail_User: approver_id (Foreign Key)</li>
+<li>IX_ApprovalLineDetail_Step: approval_line_id, step</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="355-approvalhistory--̷-̺-1">3.5.5 ApprovalHistory (���� �̷� ���̺�)<a href="#355-approvalhistory--̷-̺-1" class="hash-link" aria-label="3.5.5 ApprovalHistory (���� �̷� ���̺�)에 대한 직접 링크" title="3.5.5 ApprovalHistory (���� �̷� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���� �̷� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>history_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�̷� ID</td><td>PK</td></tr><tr><td>approval_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Approval)</td></tr><tr><td>approval_line_detail_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���缱 �� ID</td><td>FK(ApprovalLineDetail)</td></tr><tr><td>approver_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>action</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�׼� (����/�ݷ�/����)</td><td>-</td></tr><tr><td>comment</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>�ڸ�Ʈ</td><td>-</td></tr><tr><td>action_date</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�׼��Ͻ�</td><td>-</td></tr><tr><td>delegated_to</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���ӹ��� ����� ID</td><td>FK(User)</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ApprovalHistory: history_id (Primary Key)</li>
+<li>FK_ApprovalHistory_Approval: approval_id (Foreign Key)</li>
+<li>FK_ApprovalHistory_ApprovalLineDetail: approval_line_detail_id (Foreign Key)</li>
+<li>FK_ApprovalHistory_User_Approver: approver_id (Foreign Key)</li>
+<li>FK_ApprovalHistory_User_Delegated: delegated_to (Foreign Key)</li>
+<li>IX_ApprovalHistory_ActionDate: action_date</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="36-ý---1">3.6 �ý��� ���� ����<a href="#36-ý---1" class="hash-link" aria-label="3.6 �ý��� ���� ����에 대한 직접 링크" title="3.6 �ý��� ���� ����에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="361-user--̺-1">3.6.1 User (����� ���̺�)<a href="#361-user--̺-1" class="hash-link" aria-label="3.6.1 User (����� ���̺�)에 대한 직접 링크" title="3.6.1 User (����� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>����� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>user_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����� ID</td><td>PK</td></tr><tr><td>username</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>����ڸ�</td><td>-</td></tr><tr><td>employee_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>������ȣ</td><td>-</td></tr><tr><td>email</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>�̸���</td><td>-</td></tr><tr><td>password</td><td>VARCHAR</td><td>255</td><td>NO</td><td>-</td><td>��ȣȭ�� ��й�ȣ</td><td>-</td></tr><tr><td>dept_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>�μ� ID</td><td>FK(Department)</td></tr><tr><td>position</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>phone</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>��ȭ��ȣ</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;ACTIVE&#x27;</td><td>���� (Ȱ��/��Ȱ��/���)</td><td>-</td></tr><tr><td>last_login</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>������ �α���</td><td>-</td></tr><tr><td>is_admin</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>FALSE</td><td>������ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_User: user_id (Primary Key)</li>
+<li>FK_User_Department: dept_id (Foreign Key)</li>
+<li>UX_User_Username: username (Unique)</li>
+<li>UX_User_Email: email (Unique)</li>
+<li>IX_User_EmployeeId: employee_id</li>
+<li>IX_User_Status: status</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="362-role--̺-1">3.6.2 Role (���� ���̺�)<a href="#362-role--̺-1" class="hash-link" aria-label="3.6.2 Role (���� ���̺�)에 대한 직접 링크" title="3.6.2 Role (���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>����� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>role_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>PK</td></tr><tr><td>role_name</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>���Ҹ�</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>255</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Role: role_id (Primary Key)</li>
+<li>UX_Role_Name: role_name (Unique)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="363-userrole----̺-1">3.6.3 UserRole (�����-���� ���� ���̺�)<a href="#363-userrole----̺-1" class="hash-link" aria-label="3.6.3 UserRole (�����-���� ���� ���̺�)에 대한 직접 링크" title="3.6.3 UserRole (�����-���� ���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>����ڿ� ���� ���� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>user_role_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�����-���� ���� ID</td><td>PK</td></tr><tr><td>user_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����� ID</td><td>FK(User)</td></tr><tr><td>role_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Role)</td></tr><tr><td>granted_date</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�ο��Ͻ�</td><td>-</td></tr><tr><td>granted_by</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ο��� ID</td><td>FK(User)</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_UserRole: user_role_id (Primary Key)</li>
+<li>FK_UserRole_User: user_id (Foreign Key)</li>
+<li>FK_UserRole_Role: role_id (Foreign Key)</li>
+<li>FK_UserRole_User_Granter: granted_by (Foreign Key)</li>
+<li>UX_UserRole_Unique: user_id, role_id (Unique)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="364-permission--̺-1">3.6.4 Permission (���� ���̺�)<a href="#364-permission--̺-1" class="hash-link" aria-label="3.6.4 Permission (���� ���̺�)에 대한 직접 링크" title="3.6.4 Permission (���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�ý��� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>permission_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>PK</td></tr><tr><td>permission_name</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>���Ѹ�</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>255</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>resource</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>�ڿ� (�޴�/���)</td><td>-</td></tr><tr><td>action</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�׼� (��ȸ/����/����/����)</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Permission: permission_id (Primary Key)</li>
+<li>UX_Permission_Name: permission_name (Unique)</li>
+<li>IX_Permission_Resource: resource, action</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="365-rolepermission----̺-1">3.6.5 RolePermission (����-���� ���� ���̺�)<a href="#365-rolepermission----̺-1" class="hash-link" aria-label="3.6.5 RolePermission (����-���� ���� ���̺�)에 대한 직접 링크" title="3.6.5 RolePermission (����-���� ���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���Ұ� ���� ���� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>role_permission_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����-���� ���� ID</td><td>PK</td></tr><tr><td>role_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Role)</td></tr><tr><td>permission_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Permission)</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_RolePermission: role_permission_id (Primary Key)</li>
+<li>FK_RolePermission_Role: role_id (Foreign Key)</li>
+<li>FK_RolePermission_Permission: permission_id (Foreign Key)</li>
+<li>UX_RolePermission_Unique: role_id, permission_id (Unique)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="366-code-ڵ-̺-1">3.6.6 Code (�ڵ� ���̺�)<a href="#366-code-ڵ-̺-1" class="hash-link" aria-label="3.6.6 Code (�ڵ� ���̺�)에 대한 직접 링크" title="3.6.6 Code (�ڵ� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�ý��� �ڵ� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>code_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ڵ� ID</td><td>PK</td></tr><tr><td>code_group</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>�ڵ� �׷�</td><td>-</td></tr><tr><td>code</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>�ڵ�</td><td>-</td></tr><tr><td>code_name</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>�ڵ��</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>255</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>sort_order</td><td>INT</td><td>-</td><td>NO</td><td>0</td><td>���� ����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������ # ���� å�������� ���� �ý��� DB ���輭</td><td></td></tr></tbody></table>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="1--1">1. ����<a href="#1--1" class="hash-link" aria-label="1. ����에 대한 직접 링크" title="1. ����에 대한 직접 링크">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="11--1">1.1 ����<a href="#11--1" class="hash-link" aria-label="1.1 ����에 대한 직접 링크" title="1.1 ����에 대한 직접 링크">​</a></h3>
+<p>�� ������ ���� å�������� ���� �ý����� �����ͺ��̽� ���踦 �����Ѵ�. �ý����� �䱸������ ȿ�������� �����ϱ� ���� �����ͺ��̽� ����, ���̺�, �ʵ�, ���� ���� ���� ����Ѵ�.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="12--1">1.2 ����<a href="#12--1" class="hash-link" aria-label="1.2 ����에 대한 직접 링크" title="1.2 ����에 대한 직접 링크">​</a></h3>
+<ul>
+<li>å������ ���� ������</li>
+<li>�������� ���� ������</li>
+<li>������ ���� ������</li>
+<li>���� ���� ������</li>
+<li>�ý��� ���� ������</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="13---1">1.3 ���� ����<a href="#13---1" class="hash-link" aria-label="1.3 ���� ����에 대한 직접 링크" title="1.3 ���� ����에 대한 직접 링크">​</a></h3>
+<ul>
+<li>���� å�������� ���� �ý��� �䱸���� ���Ǽ�</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="2-ͺ̽--1">2. �����ͺ��̽� ����<a href="#2-ͺ̽--1" class="hash-link" aria-label="2. �����ͺ��̽� ����에 대한 직접 링크" title="2. �����ͺ��̽� ����에 대한 직접 링크">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="21-ͺ̽--1">2.1 �����ͺ��̽� ����<a href="#21-ͺ̽--1" class="hash-link" aria-label="2.1 �����ͺ��̽� ����에 대한 직접 링크" title="2.1 �����ͺ��̽� ����에 대한 직접 링크">​</a></h3>
+<ul>
+<li><strong>DBMS</strong>: ������ �����ͺ��̽�(RDBMS)</li>
+<li><strong>���� ���ڵ�</strong>: UTF-8</li>
+<li><strong>�ֿ� ����</strong>:<!-- -->
+<ul>
+<li>����/�λ� ���� ����</li>
+<li>å�� ���� ����</li>
+<li>�������� ���� ����</li>
+<li>������ ���� ����</li>
+<li>���� ���� ����</li>
+<li>�ý��� ���� ����</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="22----erd-1">2.2 ������ ������ �� (ERD)<a href="#22----erd-1" class="hash-link" aria-label="2.2 ������ ������ �� (ERD)에 대한 직접 링크" title="2.2 ������ ������ �� (ERD)에 대한 직접 링크">​</a></h3>
+<p>���� å�������� ���� �ý����� �ֿ� ��ƼƼ�� ����� ������ ����:</p>
+<ul>
+<li>����(Organization) �� �ӿ�/�μ���(Executive) : 1<!-- -->:N<!-- --> ����</li>
+<li>�ӿ�/�μ���(Executive) �� å��(Duty) : N<!-- -->:M<!-- --> ���� (ExecutiveDuty �߰� ���̺�)</li>
+<li>å��(Duty) �� å�������(DutyDescription) : 1<!-- -->:N<!-- --> ����</li>
+<li>å��(Duty) �� ���������Ŵ���(ControlManual) : 1<!-- -->:N<!-- --> ����</li>
+<li>�μ�(Department) �� ��������Ȱ��(ControlActivity) : 1<!-- -->:N<!-- --> ����</li>
+<li>��������Ȱ��(ControlActivity) �� ��������(Inspection) : 1<!-- -->:N<!-- --> ����</li>
+<li>��������(Inspection) �� ��������(Improvement) : 1<!-- -->:N<!-- --> ����</li>
+<li>����(Document) �� ����(Approval) : 1<!-- -->:N<!-- --> ����</li>
+<li>�����(User) �� ����(Role) : N<!-- -->:M<!-- --> ���� (UserRole �߰� ���̺�)</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="3-̺--1">3. ���̺� ����<a href="#3-̺--1" class="hash-link" aria-label="3. ���̺� ����에 대한 직접 링크" title="3. ���̺� ����에 대한 직접 링크">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="31-λ---1">3.1 ����/�λ� ���� ����<a href="#31-λ---1" class="hash-link" aria-label="3.1 ����/�λ� ���� ����에 대한 직접 링크" title="3.1 ����/�λ� ���� ����에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="311-organization--̺-1">3.1.1 Organization (���� ���̺�)<a href="#311-organization--̺-1" class="hash-link" aria-label="3.1.1 Organization (���� ���̺�)에 대한 직접 링크" title="3.1.1 Organization (���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>org_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>PK</td></tr><tr><td>org_name</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>org_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ���� (����, �μ�, �� ��)</td><td>-</td></tr><tr><td>parent_org_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� ���� ID</td><td>FK(Organization)</td></tr><tr><td>org_level</td><td>INT</td><td>-</td><td>NO</td><td>0</td><td>���� ����</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>500</td><td>YES</td><td>NULL</td><td>���� ����</td><td>-</td></tr><tr><td>effective_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>expiry_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Organization: org_id (Primary Key)</li>
+<li>IX_Organization_Parent: parent_org_id (Foreign Key)</li>
+<li>IX_Organization_Name: org_name</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="312-department-μ-̺-1">3.1.2 Department (�μ� ���̺�)<a href="#312-department-μ-̺-1" class="hash-link" aria-label="3.1.2 Department (�μ� ���̺�)에 대한 직접 링크" title="3.1.2 Department (�μ� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�μ� �� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>dept_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�μ� ID</td><td>PK</td></tr><tr><td>org_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Organization)</td></tr><tr><td>dept_code</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�μ� �ڵ�</td><td>-</td></tr><tr><td>dept_name</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>�μ���</td><td>-</td></tr><tr><td>dept_head_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>�μ��� ID</td><td>FK(Executive)</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Department: dept_id (Primary Key)</li>
+<li>FK_Department_Organization: org_id (Foreign Key)</li>
+<li>FK_Department_Executive: dept_head_id (Foreign Key)</li>
+<li>IX_Department_Code: dept_code</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="313-executive-ӿμ-̺-1">3.1.3 Executive (�ӿ�/�μ��� ���̺�)<a href="#313-executive-ӿμ-̺-1" class="hash-link" aria-label="3.1.3 Executive (�ӿ�/�μ��� ���̺�)에 대한 직접 링크" title="3.1.3 Executive (�ӿ�/�μ��� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�ӿ� �� �μ��� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>executive_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ӿ�/�μ��� ID</td><td>PK</td></tr><tr><td>user_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����� ID</td><td>FK(User)</td></tr><tr><td>org_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�Ҽ� ���� ID</td><td>FK(Organization)</td></tr><tr><td>position</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>title</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>��å</td><td>-</td></tr><tr><td>executive_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ӿ� ���� (�ӿ�/�μ���)</td><td>-</td></tr><tr><td>appointed_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>�Ӹ���</td><td>-</td></tr><tr><td>resigned_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Executive: executive_id (Primary Key)</li>
+<li>FK_Executive_User: user_id (Foreign Key)</li>
+<li>FK_Executive_Organization: org_id (Foreign Key)</li>
+<li>IX_Executive_Position: position</li>
+<li>IX_Executive_Type: executive_type</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="314-committee-ü-̺-1">3.1.4 Committee (����ü ���̺�)<a href="#314-committee-ü-̺-1" class="hash-link" aria-label="3.1.4 Committee (����ü ���̺�)에 대한 직접 링크" title="3.1.4 Committee (����ü ���̺�)에 대한 직접 링크">​</a></h4>
+<p>����ü ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>committee_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����ü ID</td><td>PK</td></tr><tr><td>committee_name</td><td>VARCHAR</td><td>100</td><td>NO</td><td>-</td><td>����ü��</td><td>-</td></tr><tr><td>committee_type</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>����ü ����</td><td>-</td></tr><tr><td>description</td><td>VARCHAR</td><td>500</td><td>YES</td><td>NULL</td><td>����ü ����</td><td>-</td></tr><tr><td>chair_executive_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� �ӿ� ID</td><td>FK(Executive)</td></tr><tr><td>established_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>disbanded_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>�ػ���</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Committee: committee_id (Primary Key)</li>
+<li>FK_Committee_Executive: chair_executive_id (Foreign Key)</li>
+<li>IX_Committee_Name: committee_name</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="315-committeemember-ü--̺-1">3.1.5 CommitteeMember (����ü ������ ���̺�)<a href="#315-committeemember-ü--̺-1" class="hash-link" aria-label="3.1.5 CommitteeMember (����ü ������ ���̺�)에 대한 직접 링크" title="3.1.5 CommitteeMember (����ü ������ ���̺�)에 대한 직접 링크">​</a></h4>
+<p>����ü ������ ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>committee_member_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����ü ������ ID</td><td>PK</td></tr><tr><td>committee_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����ü ID</td><td>FK(Committee)</td></tr><tr><td>executive_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ӿ� ID</td><td>FK(Executive)</td></tr><tr><td>role</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>joined_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>left_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>Ż����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_CommitteeMember: committee_member_id (Primary Key)</li>
+<li>FK_CommitteeMember_Committee: committee_id (Foreign Key)</li>
+<li>FK_CommitteeMember_Executive: executive_id (Foreign Key)</li>
+<li>UX_CommitteeMember_Unique: committee_id, executive_id (Unique)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="32-å---1">3.2 å�� ���� ����<a href="#32-å---1" class="hash-link" aria-label="3.2 å�� ���� ����에 대한 직접 링크" title="3.2 å�� ���� ����에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="321-duty-å-̺-1">3.2.1 Duty (å�� ���̺�)<a href="#321-duty-å-̺-1" class="hash-link" aria-label="3.2.1 Duty (å�� ���̺�)에 대한 직접 링크" title="3.2.1 Duty (å�� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>å�� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>duty_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>å�� ID</td><td>PK</td></tr><tr><td>duty_code</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>å�� �ڵ�</td><td>-</td></tr><tr><td>duty_name</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>å����</td><td>-</td></tr><tr><td>duty_type</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>å�� ����</td><td>-</td></tr><tr><td>description</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>å�� ����</td><td>-</td></tr><tr><td>parent_duty_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� å�� ID</td><td>FK(Duty)</td></tr><tr><td>duty_level</td><td>INT</td><td>-</td><td>NO</td><td>0</td><td>å�� ����</td><td>-</td></tr><tr><td>priority</td><td>INT</td><td>-</td><td>YES</td><td>NULL</td><td>�켱����</td><td>-</td></tr><tr><td>reg_basis</td><td>VARCHAR</td><td>500</td><td>YES</td><td>NULL</td><td>���� �ٰ�</td><td>-</td></tr><tr><td>version</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;1.0&#x27;</td><td>����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Duty: duty_id (Primary Key)</li>
+<li>FK_Duty_ParentDuty: parent_duty_id (Foreign Key)</li>
+<li>IX_Duty_Code: duty_code</li>
+<li>IX_Duty_Name: duty_name</li>
+<li>IX_Duty_Type: duty_type</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="322-dutydescription-å-̺-1">3.2.2 DutyDescription (å������� ���̺�)<a href="#322-dutydescription-å-̺-1" class="hash-link" aria-label="3.2.2 DutyDescription (å������� ���̺�)에 대한 직접 링크" title="3.2.2 DutyDescription (å������� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>å������� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>duty_desc_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>å������� ID</td><td>PK</td></tr><tr><td>duty_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>å�� ID</td><td>FK(Duty)</td></tr><tr><td>executive_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>�ӿ� ID</td><td>FK(Executive)</td></tr><tr><td>title</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>responsibilities</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>å�ӻ���</td><td>-</td></tr><tr><td>authority</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>version</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;1.0&#x27;</td><td>����</td><td>-</td></tr><tr><td>effective_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>expiry_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;DRAFT&#x27;</td><td>���� (�ʾ�/����/���)</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_DutyDescription: duty_desc_id (Primary Key)</li>
+<li>FK_DutyDescription_Duty: duty_id (Foreign Key)</li>
+<li>FK_DutyDescription_Executive: executive_id (Foreign Key)</li>
+<li>IX_DutyDescription_Title: title</li>
+<li>IX_DutyDescription_Status: status</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="323-executiveduty-ӿ-å--̺-1">3.2.3 ExecutiveDuty (�ӿ�-å�� ���� ���̺�)<a href="#323-executiveduty-ӿ-å--̺-1" class="hash-link" aria-label="3.2.3 ExecutiveDuty (�ӿ�-å�� ���� ���̺�)에 대한 직접 링크" title="3.2.3 ExecutiveDuty (�ӿ�-å�� ���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�ӿ��� å�� ���� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>exec_duty_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ӿ�-å�� ���� ID</td><td>PK</td></tr><tr><td>executive_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�ӿ� ID</td><td>FK(Executive)</td></tr><tr><td>duty_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>å�� ID</td><td>FK(Duty)</td></tr><tr><td>assign_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>�Ҵ���</td><td>-</td></tr><tr><td>release_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>is_primary</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>FALSE</td><td>�ֿ� å�� ����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ExecutiveDuty: exec_duty_id (Primary Key)</li>
+<li>FK_ExecutiveDuty_Executive: executive_id (Foreign Key)</li>
+<li>FK_ExecutiveDuty_Duty: duty_id (Foreign Key)</li>
+<li>UX_ExecutiveDuty_Unique: executive_id, duty_id (Unique)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="324-dutyorganization-å---̺-1">3.2.4 DutyOrganization (å��-���� ���� ���̺�)<a href="#324-dutyorganization-å---̺-1" class="hash-link" aria-label="3.2.4 DutyOrganization (å��-���� ���� ���̺�)에 대한 직접 링크" title="3.2.4 DutyOrganization (å��-���� ���� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>å���� ���� ���� ���� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>duty_org_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>å��-���� ���� ID</td><td>PK</td></tr><tr><td>duty_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>å�� ID</td><td>FK(Duty)</td></tr><tr><td>org_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>���� ID</td><td>FK(Organization)</td></tr><tr><td>assign_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>�Ҵ���</td><td>-</td></tr><tr><td>release_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_DutyOrganization: duty_org_id (Primary Key)</li>
+<li>FK_DutyOrganization_Duty: duty_id (Foreign Key)</li>
+<li>FK_DutyOrganization_Organization: org_id (Foreign Key)</li>
+<li>UX_DutyOrganization_Unique: duty_id, org_id (Unique)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="325-controlmanual--ŵ-̺-1">3.2.5 ControlManual (�������� �Ŵ��� ���̺�)<a href="#325-controlmanual--ŵ-̺-1" class="hash-link" aria-label="3.2.5 ControlManual (�������� �Ŵ��� ���̺�)에 대한 직접 링크" title="3.2.5 ControlManual (�������� �Ŵ��� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�������� �����Ŵ��� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>manual_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�Ŵ��� ID</td><td>PK</td></tr><tr><td>dept_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�μ� ID</td><td>FK(Department)</td></tr><tr><td>duty_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� å�� ID</td><td>FK(Duty)</td></tr><tr><td>manual_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�Ŵ��� ���� (����/�μ���)</td><td>-</td></tr><tr><td>title</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>NO</td><td>-</td><td>����</td><td>-</td></tr><tr><td>version</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;1.0&#x27;</td><td>����</td><td>-</td></tr><tr><td>effective_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>expiry_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;DRAFT&#x27;</td><td>���� (�ʾ�/����/���)</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ControlManual: manual_id (Primary Key)</li>
+<li>FK_ControlManual_Department: dept_id (Foreign Key)</li>
+<li>FK_ControlManual_Duty: duty_id (Foreign Key)</li>
+<li>IX_ControlManual_Title: title</li>
+<li>IX_ControlManual_Type: manual_type</li>
+<li>IX_ControlManual_Status: status</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="33----1">3.3 �������� ���� ����<a href="#33----1" class="hash-link" aria-label="3.3 �������� ���� ����에 대한 직접 링크" title="3.3 �������� ���� ����에 대한 직접 링크">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="331-controlactivity-ȱ-̺-1">3.3.1 ControlActivity (��������Ȱ�� ���̺�)<a href="#331-controlactivity-ȱ-̺-1" class="hash-link" aria-label="3.3.1 ControlActivity (��������Ȱ�� ���̺�)에 대한 직접 링크" title="3.3.1 ControlActivity (��������Ȱ�� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>��������Ȱ�� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>activity_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>Ȱ�� ID</td><td>PK</td></tr><tr><td>dept_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�μ� ID</td><td>FK(Department)</td></tr><tr><td>manual_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� �Ŵ��� ID</td><td>FK(ControlManual)</td></tr><tr><td>activity_name</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>Ȱ����</td><td>-</td></tr><tr><td>description</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>Ȱ�� ����</td><td>-</td></tr><tr><td>activity_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>Ȱ�� ����</td><td>-</td></tr><tr><td>start_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>end_date</td><td>DATE</td><td>-</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;PLANNED&#x27;</td><td>���� (��ȹ/����/�Ϸ�)</td><td>-</td></tr><tr><td>responsible_user_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>����� ID</td><td>FK(User)</td></tr><tr><td>approved_by</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>approved_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ControlActivity: activity_id (Primary Key)</li>
+<li>FK_ControlActivity_Department: dept_id (Foreign Key)</li>
+<li>FK_ControlActivity_ControlManual: manual_id (Foreign Key)</li>
+<li>FK_ControlActivity_User_Responsible: responsible_user_id (Foreign Key)</li>
+<li>FK_ControlActivity_User_Approver: approved_by (Foreign Key)</li>
+<li>IX_ControlActivity_Status: status</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="332-checklist-üũʈ-̺-1">3.3.2 Checklist (üũ����Ʈ ���̺�)<a href="#332-checklist-üũʈ-̺-1" class="hash-link" aria-label="3.3.2 Checklist (üũ����Ʈ ���̺�)에 대한 직접 링크" title="3.3.2 Checklist (üũ����Ʈ ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�������� üũ����Ʈ ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>checklist_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>üũ����Ʈ ID</td><td>PK</td></tr><tr><td>manual_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� �Ŵ��� ID</td><td>FK(ControlManual)</td></tr><tr><td>checklist_name</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>üũ����Ʈ��</td><td>-</td></tr><tr><td>description</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>checklist_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>üũ����Ʈ ����</td><td>-</td></tr><tr><td>version</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;1.0&#x27;</td><td>����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_Checklist: checklist_id (Primary Key)</li>
+<li>FK_Checklist_ControlManual: manual_id (Foreign Key)</li>
+<li>IX_Checklist_Name: checklist_name</li>
+<li>IX_Checklist_Type: checklist_type</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="333-checklistitem-üũʈ--̺-1">3.3.3 ChecklistItem (üũ����Ʈ �׸� ���̺�)<a href="#333-checklistitem-üũʈ--̺-1" class="hash-link" aria-label="3.3.3 ChecklistItem (üũ����Ʈ �׸� ���̺�)에 대한 직접 링크" title="3.3.3 ChecklistItem (üũ����Ʈ �׸� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>üũ����Ʈ �׸� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>item_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�׸� ID</td><td>PK</td></tr><tr><td>checklist_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>üũ����Ʈ ID</td><td>FK(Checklist)</td></tr><tr><td>item_no</td><td>INT</td><td>-</td><td>NO</td><td>-</td><td>�׸� ��ȣ</td><td>-</td></tr><tr><td>content</td><td>TEXT</td><td>-</td><td>NO</td><td>-</td><td>�׸� ����</td><td>-</td></tr><tr><td>item_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�׸� ����</td><td>-</td></tr><tr><td>is_required</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>�ʼ� ����</td><td>-</td></tr><tr><td>is_active</td><td>BOOLEAN</td><td>-</td><td>NO</td><td>TRUE</td><td>Ȱ��ȭ ����</td><td>-</td></tr><tr><td>created_by</td><td>VARCHAR</td><td>50</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>created_at</td><td>DATETIME</td><td>-</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>updated_by</td><td>VARCHAR</td><td>50</td><td>YES</td><td>NULL</td><td>������</td><td>-</td></tr><tr><td>updated_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr></tbody></table>
+<p><strong>�ε���</strong>:</p>
+<ul>
+<li>PK_ChecklistItem: item_id (Primary Key)</li>
+<li>FK_ChecklistItem_Checklist: checklist_id (Foreign Key)</li>
+<li>IX_ChecklistItem_No: checklist_id, item_no</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="334-inspection--̺-1">3.3.4 Inspection (�������� ���̺�)<a href="#334-inspection--̺-1" class="hash-link" aria-label="3.3.4 Inspection (�������� ���̺�)에 대한 직접 링크" title="3.3.4 Inspection (�������� ���̺�)에 대한 직접 링크">​</a></h4>
+<p>�������� ������ �����ϴ� ���̺�</p>
+<table><thead><tr><th>�ʵ��</th><th>������ Ÿ��</th><th>����</th><th>NULL ���</th><th>�⺻��</th><th>����</th><th>���</th></tr></thead><tbody><tr><td>inspection_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�������� ID</td><td>PK</td></tr><tr><td>dept_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�μ� ID</td><td>FK(Department)</td></tr><tr><td>checklist_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>üũ����Ʈ ID</td><td>FK(Checklist)</td></tr><tr><td>activity_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���� Ȱ�� ID</td><td>FK(ControlActivity)</td></tr><tr><td>inspection_name</td><td>VARCHAR</td><td>200</td><td>NO</td><td>-</td><td>�������˸�</td><td>-</td></tr><tr><td>description</td><td>TEXT</td><td>-</td><td>YES</td><td>NULL</td><td>����</td><td>-</td></tr><tr><td>inspection_type</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>�������� ����</td><td>-</td></tr><tr><td>inspection_date</td><td>DATE</td><td>-</td><td>NO</td><td>-</td><td>������</td><td>-</td></tr><tr><td>status</td><td>VARCHAR</td><td>20</td><td>NO</td><td>&#x27;PLANNED&#x27;</td><td>���� (��ȹ/����/�Ϸ�)</td><td>-</td></tr><tr><td>inspector_id</td><td>VARCHAR</td><td>20</td><td>NO</td><td>-</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>reviewer_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>reviewed_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>approver_id</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>������ ID</td><td>FK(User)</td></tr><tr><td>approved_at</td><td>DATETIME</td><td>-</td><td>YES</td><td>NULL</td><td>�����Ͻ�</td><td>-</td></tr><tr><td>result</td><td>VARCHAR</td><td>20</td><td>YES</td><td>NULL</td><td>���</td><td></td></tr></tbody></table></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/ILoveSia/myDoc/tree/main/docs/Claude_DB_Design.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>페이지 편집</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="문서 페이지"><a class="pagination-nav__link pagination-nav__link--prev" href="/myDoc/docs/Claude_BRS"><div class="pagination-nav__sublabel">이전</div><div class="pagination-nav__label">���� å�������� ���� �ý��� �䱸���� ���Ǽ�</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/myDoc/docs/Claude_UI_Design"><div class="pagination-nav__sublabel">다음</div><div class="pagination-nav__label">통합 책무구조도 관리 시스템 화면설계서</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#1-" class="table-of-contents__link toc-highlight">1. ����</a><ul><li><a href="#11-" class="table-of-contents__link toc-highlight">1.1 ����</a></li><li><a href="#12-" class="table-of-contents__link toc-highlight">1.2 ����</a></li><li><a href="#13--" class="table-of-contents__link toc-highlight">1.3 ���� ����</a></li></ul></li><li><a href="#2-ͺ̽-" class="table-of-contents__link toc-highlight">2. �����ͺ��̽� ����</a><ul><li><a href="#21-ͺ̽-" class="table-of-contents__link toc-highlight">2.1 �����ͺ��̽� ����</a></li><li><a href="#22----erd" class="table-of-contents__link toc-highlight">2.2 ������ ������ �� (ERD)</a></li></ul></li><li><a href="#3-̺-" class="table-of-contents__link toc-highlight">3. ���̺� ����</a><ul><li><a href="#31-λ--" class="table-of-contents__link toc-highlight">3.1 ����/�λ� ���� ����</a></li><li><a href="#32-å--" class="table-of-contents__link toc-highlight">3.2 å�� ���� ����</a></li><li><a href="#33---" class="table-of-contents__link toc-highlight">3.3 �������� ���� ����</a></li><li><a href="#34---" class="table-of-contents__link toc-highlight">3.4 ������ ���� ����</a></li><li><a href="#35---" class="table-of-contents__link toc-highlight">3.5 ���� ���� ����</a></li><li><a href="#36-ý--" class="table-of-contents__link toc-highlight">3.6 �ý��� ���� ����</a></li></ul></li><li><a href="#4-ͺ̽---" class="table-of-contents__link toc-highlight">4. �����ͺ��̽� ���� �� ��������</a><ul><li><a href="#41-ֿ-" class="table-of-contents__link toc-highlight">4.1 �ֿ� ����</a></li><li><a href="#42-ֿ-" class="table-of-contents__link toc-highlight">4.2 �ֿ� ��������</a></li></ul></li><li><a href="#5--̱̼" class="table-of-contents__link toc-highlight">5. ������ ���̱׷��̼�</a><ul><li><a href="#51-̱̼-" class="table-of-contents__link toc-highlight">5.1 ���̱׷��̼� ����</a></li><li><a href="#52-̱̼--" class="table-of-contents__link toc-highlight">5.2 ���̱׷��̼� ��� ������</a></li><li><a href="#53-̱̼-" class="table-of-contents__link toc-highlight">5.3 ���̱׷��̼� ����</a></li></ul></li><li><a href="#6-ͺ̽--ȭ" class="table-of-contents__link toc-highlight">6. �����ͺ��̽� ���� ����ȭ</a><ul><li><a href="#61-ε-" class="table-of-contents__link toc-highlight">6.1 �ε��� ����</a></li><li><a href="#62-ƽŵ-" class="table-of-contents__link toc-highlight">6.2 ��Ƽ�Ŵ� ����</a></li><li><a href="#63--ȭ" class="table-of-contents__link toc-highlight">6.3 ���� ����ȭ</a></li><li><a href="#64-ĳ-" class="table-of-contents__link toc-highlight">6.4 ĳ�� ����</a></li></ul></li><li><a href="#7---" class="table-of-contents__link toc-highlight">7. ���� �� ����</a><ul><li><a href="#71--" class="table-of-contents__link toc-highlight">7.1 ������ ����</a></li><li><a href="#72--" class="table-of-contents__link toc-highlight">7.2 ���� ����</a></li></ul></li><li><a href="#η" class="table-of-contents__link toc-highlight">�η�</a><ul><li><a href="#a--" class="table-of-contents__link toc-highlight">A. ��� ����</a></li><li><a href="#b--̷" class="table-of-contents__link toc-highlight">B. ���� �̷�</a></li><li><a href="#34----1" class="table-of-contents__link toc-highlight">3.4 ������ ���� ����</a></li><li><a href="#35----1" class="table-of-contents__link toc-highlight">3.5 ���� ���� ����</a></li><li><a href="#36-ý---1" class="table-of-contents__link toc-highlight">3.6 �ý��� ���� ����</a></li></ul></li><li><a href="#1--1" class="table-of-contents__link toc-highlight">1. ����</a><ul><li><a href="#11--1" class="table-of-contents__link toc-highlight">1.1 ����</a></li><li><a href="#12--1" class="table-of-contents__link toc-highlight">1.2 ����</a></li><li><a href="#13---1" class="table-of-contents__link toc-highlight">1.3 ���� ����</a></li></ul></li><li><a href="#2-ͺ̽--1" class="table-of-contents__link toc-highlight">2. �����ͺ��̽� ����</a><ul><li><a href="#21-ͺ̽--1" class="table-of-contents__link toc-highlight">2.1 �����ͺ��̽� ����</a></li><li><a href="#22----erd-1" class="table-of-contents__link toc-highlight">2.2 ������ ������ �� (ERD)</a></li></ul></li><li><a href="#3-̺--1" class="table-of-contents__link toc-highlight">3. ���̺� ����</a><ul><li><a href="#31-λ---1" class="table-of-contents__link toc-highlight">3.1 ����/�λ� ���� ����</a></li><li><a href="#32-å---1" class="table-of-contents__link toc-highlight">3.2 å�� ���� ����</a></li><li><a href="#33----1" class="table-of-contents__link toc-highlight">3.3 �������� ���� ����</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 My Project, Inc. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
